@@ -9,10 +9,10 @@ if($_POST) {
 	$usersName = $_POST['editUsersName'];
     //$usersStatus = $_POST['editUsersStatus'];
     $usersEmail = $_POST['editEmail'];
-    //$usersRol = $_POST['editUsersRol'];
+    $usersRol = $_POST['editRol'];
     $usersId = $_POST['usersId'];
 
-	$sql = "UPDATE users SET username = '$usersName', email = '$usersEmail' WHERE user_id = '$usersId'";
+	$sql = "UPDATE users SET username = '$usersName', email = '$usersEmail', rol = '$usersRol' WHERE user_id = '$usersId'";
 
 	if($connect->query($sql) === TRUE) {
 	 	$valid['success'] = true;

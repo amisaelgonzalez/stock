@@ -35,6 +35,19 @@
 				    </div>
 	        </div> <!-- /form-group-->
 
+	        <div class="form-group">
+	        	<label for="rol" class="col-sm-3 control-label">Rol: </label>
+	        	<label class="col-sm-1 control-label">: </label>
+				    <div class="col-sm-8">
+				      <select class="form-control" id="rol" name="rol">
+				      	<option value="">-- Seleciona--</option>
+				      	<option value="1">Super Admin</option>
+				      	<option value="2">Adminstrador</option>
+				      	<option value="3">Usuario</option>
+				      </select>
+				    </div>
+	        </div> <!-- /form-group-->
+
 	      </div> <!-- /modal-body -->
 	      
 	      <div class="modal-footer">
@@ -86,6 +99,19 @@
 		        	<label class="col-sm-1 control-label">: </label>
 					    <div class="col-sm-8">
 					      <input type="email" class="form-control" id="editEmail" placeholder="Email" name="editEmail" autocomplete="off">
+					    </div>
+		        </div> <!-- /form-group-->
+
+		        <div class="form-group">
+		        	<label for="editRol" class="col-sm-3 control-label">Rol: </label>
+		        	<label class="col-sm-1 control-label">: </label>
+					    <div class="col-sm-8">
+					      <select class="form-control" id="editRol" name="editRol">
+					      	<option value="">-- Seleciona--</option>
+					      	<option value="1">Super Admin</option>
+					      	<option value="2">Adminstrador</option>
+					      	<option value="3">Usuario</option>
+					      </select>
 					    </div>
 		        </div> <!-- /form-group-->
 

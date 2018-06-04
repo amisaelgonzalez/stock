@@ -9,9 +9,9 @@ if($_POST) {
 	$usersName = $_POST['usersName'];
 	$password = md5($_POST['password']);
     $usersEmail = $_POST['email'];
-    //$usersRol = $_POST['usersRol'];
+    $usersRol = $_POST['rol'];
 
-	$sql = "INSERT INTO users (username, password, users_status, email, rol) VALUES ('$usersName', '$password', 1, '$usersEmail', 1)";
+	$sql = "INSERT INTO users (username, password, users_status, email, rol) VALUES ('$usersName', '$password', 1, '$usersEmail', '$usersRol')";
 
 	if($connect->query($sql) === TRUE) {
 	 	$valid['success'] = true;

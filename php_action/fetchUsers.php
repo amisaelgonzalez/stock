@@ -11,6 +11,7 @@ if($result->num_rows > 0) {
 
  // $row = $result->fetch_array();
  $activeUsers = ""; 
+ $rolUsers = "";
 
  while($row = $result->fetch_array()) {
  	$usersId = $row[0];
@@ -23,6 +24,15 @@ if($result->num_rows > 0) {
 	  </button>
 	  <ul class="dropdown-menu">
 	    <li><a type="button" data-toggle="modal" data-target="#editUsersModel" onclick="editUsers('.$usersId.')"> <i class="glyphicon glyphicon-edit"></i> Editar</a></li>';
+
+	// rol
+	if ($row[3] == 1) {
+		$rolUsers = "Super admin";
+	}elseif ($row[3] == 2) {
+		$rolUsers = "administrador";		
+	}elseif ($row[3] == 3) {
+		$rolUsers = "usuario";
+	}
 
  	// active 
  	if($row[4] == 1) {
@@ -45,7 +55,7 @@ if($result->num_rows > 0) {
  	$output['data'][] = array( 		
  		$row[1], 
  		$row[2],
- 		$row[3],		
+ 		$rolUsers,		
  		$activeUsers,
  		$button
  		); 	

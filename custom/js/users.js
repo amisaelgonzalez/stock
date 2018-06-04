@@ -22,6 +22,7 @@ $(document).ready(function() {
 		var usersName = $("#usersName").val();
 		var password = $("#password").val();
 		var email = $("#email").val();
+		var rol = $("#rol").val();
 
 		if(usersName == "") {
 			$("#usersName").after('<p class="text-danger">Este campo es obligatorio</p>');
@@ -55,7 +56,18 @@ $(document).ready(function() {
 			$("#email").closest('.form-group').addClass('has-success');	  	
 		}
 
-		if(usersName && password && email) {
+		if(rol == "") {
+			$("#rol").after('<p class="text-danger">Este campo es obligatorio</p>');
+
+			$('#rol').closest('.form-group').addClass('has-error');
+		} else {
+			// remov error text field
+			$("#rol").find('.text-danger').remove();
+			// success out for form 
+			$("#rol").closest('.form-group').addClass('has-success');	  	
+		}
+
+		if(usersName && password && email && rol) {
 			var form = $(this);
 			// button loading
 			$("#createUsersBtn").button('loading');
@@ -137,6 +149,8 @@ function editUsers(usersId = null) {
 				$('#editUsersName').val(response.username);
 				// setting the users email value
 				$('#editEmail').val(response.email);
+				// setting the users rol value
+				$('#editRol').val(response.rol);
 
 				// users id 
 				$(".editUsersFooter").after('<input type="hidden" name="usersId" id="usersId" value="'+response.user_id+'" />');
@@ -151,6 +165,7 @@ function editUsers(usersId = null) {
 
 					var usersName = $('#editUsersName').val();
 					var email = $('#editEmail').val();
+					var rol = $('#editRol').val();
 
 					if(usersName == "") {
 						$("#editUsersName").after('<p class="text-danger">Este campo es obligatorio</p>');
@@ -173,7 +188,18 @@ function editUsers(usersId = null) {
 						$("#editEmail").closest('.form-group').addClass('has-success');	  	
 					}
 
-					if(usersName && email) {
+					if(rol == "") {
+						$("#editRol").after('<p class="text-danger">Este campo es obligatorio</p>');
+
+						$('#editRol').closest('.form-group').addClass('has-error');
+					} else {
+						// remov error text field
+						$("#editRol").find('.text-danger').remove();
+						// success out for form 
+						$("#editRol").closest('.form-group').addClass('has-success');	  	
+					}
+
+					if(usersName && email && rol) {
 						var form = $(this);
 
 						// submit btn
