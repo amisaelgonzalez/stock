@@ -23,6 +23,7 @@ $(document).ready(function() {
 		var password = $("#password").val();
 		var email = $("#email").val();
 		var rol = $("#rol").val();
+		var sucursal = $("#sucursal").val();
 
 		if(usersName == "") {
 			$("#usersName").after('<p class="text-danger">Este campo es obligatorio</p>');
@@ -67,7 +68,20 @@ $(document).ready(function() {
 			$("#rol").closest('.form-group').addClass('has-success');	  	
 		}
 
-		if(usersName && password && email && rol) {
+		requireSucursal = true;
+		if(rol == 2 && sucursal == "") {
+			requireSucursal = false;
+			$("#sucursal").after('<p class="text-danger">Este campo es obligatorio</p>');
+
+			$('#sucursal').closest('.form-group').addClass('has-error');
+		} else {
+			// remov error text field
+			$("#sucursal").find('.text-danger').remove();
+			// success out for form 
+			$("#sucursal").closest('.form-group').addClass('has-success');	  	
+		}
+
+		if(usersName && password && email && rol && requireSucursal) {
 			var form = $(this);
 			// button loading
 			$("#createUsersBtn").button('loading');
@@ -113,6 +127,16 @@ $(document).ready(function() {
 
 });
 
+function habilitarCombo(valor){
+	if(valor==2){
+		document.getElementById("divSucursal").style.display = 'block';
+		document.getElementById("divEditSucursal").style.display = 'block';
+	} else {
+		document.getElementById("divSucursal").style.display = 'none'; 
+		document.getElementById("divEditSucursal").style.display = 'none'; 
+	}
+}
+
 function editUsers(usersId = null) {
 
 	if(usersId) {
@@ -152,6 +176,15 @@ function editUsers(usersId = null) {
 				// setting the users rol value
 				$('#editRol').val(response.rol);
 
+				// setting the users sucursal value
+				$('#editSucursal').val(response.sucursales_id);
+
+				if (response.rol == 2) {
+					habilitarCombo(2);
+				}else{
+					habilitarCombo(1);
+				}
+
 				// users id 
 				$(".editUsersFooter").after('<input type="hidden" name="usersId" id="usersId" value="'+response.user_id+'" />');
 
@@ -166,6 +199,8 @@ function editUsers(usersId = null) {
 					var usersName = $('#editUsersName').val();
 					var email = $('#editEmail').val();
 					var rol = $('#editRol').val();
+					var editSucursal = $('#editSucursal').val();
+
 
 					if(usersName == "") {
 						$("#editUsersName").after('<p class="text-danger">Este campo es obligatorio</p>');
@@ -199,7 +234,20 @@ function editUsers(usersId = null) {
 						$("#editRol").closest('.form-group').addClass('has-success');	  	
 					}
 
-					if(usersName && email && rol) {
+					requireSucursal = true;
+					if(rol == 2 && editSucursal == "") {
+						requireSucursal = false;
+						$("#editSucursal").after('<p class="text-danger">Este campo es obligatorio</p>');
+
+						$('#editSucursal').closest('.form-group').addClass('has-error');
+					} else {
+						// remov error text field
+						$("#editSucursal").find('.text-danger').remove();
+						// success out for form 
+						$("#editSucursal").closest('.form-group').addClass('has-success');	  	
+					}
+
+					if(usersName && email && rol && requireSucursal) {
 						var form = $(this);
 
 						// submit btn

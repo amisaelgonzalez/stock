@@ -10,8 +10,12 @@ if($_POST) {
 	$password = md5($_POST['password']);
     $usersEmail = $_POST['email'];
     $usersRol = $_POST['rol'];
+	$sucursal =  $_POST['sucursal'];;
+    if ($usersRol != 2) {
+    	$sucursal = null;
+    }
 
-	$sql = "INSERT INTO users (username, password, users_status, email, rol) VALUES ('$usersName', '$password', 1, '$usersEmail', '$usersRol')";
+	$sql = "INSERT INTO users (username, password, users_status, email, rol, sucursales_id) VALUES ('$usersName', '$password', 1, '$usersEmail', '$usersRol', '$sucursal')";
 
 	if($connect->query($sql) === TRUE) {
 	 	$valid['success'] = true;

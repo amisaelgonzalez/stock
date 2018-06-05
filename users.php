@@ -27,6 +27,7 @@
 							<th>Username</th>
 							<th>Email</th>
 							<th>Rol</th>
+							<th>Sucursal</th>
 							<th>Estado</th>
 							<th style="width:15%;">Opciones</th>
 						</tr>

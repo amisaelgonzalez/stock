@@ -2,7 +2,8 @@
 
 require_once 'core.php';
 
-$sql = "SELECT user_id, username, email, rol, users_status FROM users";
+$sql = "SELECT s.user_id, s.username, s.email, s.rol, s.users_status, s.sucursales_id, su.sucursales_name FROM users s LEFT JOIN sucursales su ON s.sucursales_id = su.sucursales_id";
+
 $result = $connect->query($sql);
 
 $output = array('data' => array());
@@ -25,11 +26,15 @@ if($result->num_rows > 0) {
 	  <ul class="dropdown-menu">
 	    <li><a type="button" data-toggle="modal" data-target="#editUsersModel" onclick="editUsers('.$usersId.')"> <i class="glyphicon glyphicon-edit"></i> Editar</a></li>';
 
+	$sucursalUsers = "";
+
 	// rol
 	if ($row[3] == 1) {
 		$rolUsers = "Super admin";
 	}elseif ($row[3] == 2) {
-		$rolUsers = "administrador";		
+		$rolUsers = "administrador";
+		// sucursal 
+		$sucursalUsers = $row[6];		
 	}elseif ($row[3] == 3) {
 		$rolUsers = "usuario";
 	}
@@ -55,7 +60,8 @@ if($result->num_rows > 0) {
  	$output['data'][] = array( 		
  		$row[1], 
  		$row[2],
- 		$rolUsers,		
+ 		$rolUsers,
+ 		$sucursalUsers,
  		$activeUsers,
  		$button
  		); 	

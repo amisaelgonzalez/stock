@@ -39,7 +39,7 @@
 	        	<label for="rol" class="col-sm-3 control-label">Rol: </label>
 	        	<label class="col-sm-1 control-label">: </label>
 				    <div class="col-sm-8">
-				      <select class="form-control" id="rol" name="rol">
+				      <select class="form-control" id="rol" name="rol" onchange="habilitarCombo(this.value);">
 				      	<option value="">-- Seleciona--</option>
 				      	<option value="1">Super Admin</option>
 				      	<option value="2">Adminstrador</option>
@@ -47,6 +47,26 @@
 				      </select>
 				    </div>
 	        </div> <!-- /form-group-->
+
+	        <div class="form-group" id="divSucursal" style="display: none;">
+	        	<label for="sucursal" class="col-sm-3 control-label">Sucursal: </label>
+	        	<label class="col-sm-1 control-label">: </label>
+				    <div class="col-sm-8">
+				      <select class="form-control" id="sucursal" name="sucursal">
+				      	<option value="">-- Seleciona--</option>
+				      	<?php 
+				      	$sql = "SELECT sucursales_id, sucursales_name FROM sucursales WHERE sucursales_status = 1";
+								$result = $connect->query($sql);
+
+								while($row = $result->fetch_array()) {
+									echo "<option value='".$row[0]."'>".$row[1]."</option>";
+								} // while
+								
+				      	?>
+				      </select>
+				    </div>
+	        </div> <!-- /form-group-->
+
 
 	      </div> <!-- /modal-body -->
 	      
@@ -106,11 +126,30 @@
 		        	<label for="editRol" class="col-sm-3 control-label">Rol: </label>
 		        	<label class="col-sm-1 control-label">: </label>
 					    <div class="col-sm-8">
-					      <select class="form-control" id="editRol" name="editRol">
+					      <select class="form-control" id="editRol" name="editRol" onchange="habilitarCombo(this.value);">
 					      	<option value="">-- Seleciona--</option>
 					      	<option value="1">Super Admin</option>
 					      	<option value="2">Adminstrador</option>
 					      	<option value="3">Usuario</option>
+					      </select>
+					    </div>
+		        </div> <!-- /form-group-->
+
+		        <div class="form-group" id="divEditSucursal" style="display: none;">
+		        	<label for="editSucursal" class="col-sm-3 control-label">Sucursal: </label>
+		        	<label class="col-sm-1 control-label">: </label>
+					    <div class="col-sm-8">
+					      <select class="form-control" id="editSucursal" name="editSucursal">
+					      	<option value="">-- Seleciona--</option>
+					      	<?php 
+					      	$sql = "SELECT sucursales_id, sucursales_name FROM sucursales WHERE sucursales_status = 1";
+									$result = $connect->query($sql);
+
+									while($row = $result->fetch_array()) {
+										echo "<option value='".$row[0]."'>".$row[1]."</option>";
+									} // while
+									
+					      	?>
 					      </select>
 					    </div>
 		        </div> <!-- /form-group-->
