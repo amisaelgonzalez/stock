@@ -1,9 +1,3 @@
-<?php 
-	if (!$_GET['id']){
-		header("location: index.php");
-	}
-?>
-<input type="hidden" id="id" name="id" value="<?php echo $_GET['id']; ?>">
 <?php require_once 'includes/header.php'; ?>
 <?php include('modal/pedidoModal.php');?>
 <div class="row">
@@ -11,7 +5,6 @@
 
 		<ol class="breadcrumb">
 		  <li><a href="dashboard.php">Inicio</a></li>
-  		  <li><a href="brand.php">Fabricantes</a></li> 
 		  <li class="active">Pedidos</li>
 		</ol>
 
@@ -30,6 +23,7 @@
 				<table class="table" id="managePedidoTable">
 					<thead>
 						<tr>
+							<th>Fabricante</th>
 							<th>Descripcion del pedido</th>
 							<th style="width:15%;">Opciones</th>
 						</tr>

@@ -2,9 +2,7 @@
 
 require_once 'core.php';
 
-$brandId = $_GET['proveedor_id'];
-
-$sql = "SELECT pedido_id, pedido_name FROM pedidos WHERE pedido_status = 1 AND brand_id=".$brandId;
+$sql = "SELECT p.pedido_id, p.pedido_name, p.brand_id, b.brand_name FROM pedidos p INNER JOIN brands b ON p.brand_id = b.brand_id WHERE pedido_status = 1";
 $result = $connect->query($sql);
 
 $output = array('data' => array());
@@ -28,6 +26,7 @@ if($result->num_rows > 0) {
 	</div>';
 
  	$output['data'][] = array( 		
+ 		$row[3],
  		$row[1],
  		$button
  		); 	

@@ -18,7 +18,18 @@ $(document).ready(function() {
 		// remove the form error
 		$('.form-group').removeClass('has-error').removeClass('has-success');			
 
+		var brandName = $("#brandName").val();
 		var pedidoName = $("#pedidoName").val();
+
+		if(brandName == "") {
+			$("#brandName").after('<p class="text-danger">Este campo es obligatorio</p>');
+			$('#brandName').closest('.form-group').addClass('has-error');
+		}	else {
+			// remov error text field
+			$("#brandName").find('.text-danger').remove();
+			// success out for form 
+			$("#brandName").closest('.form-group').addClass('has-success');	  	
+		}	// /else
 
 		if(pedidoName == "") {
 			$("#pedidoName").after('<p class="text-danger">Este campo es obligatorio</p>');
@@ -30,7 +41,7 @@ $(document).ready(function() {
 			$("#pedidoName").closest('.form-group').addClass('has-success');	  	
 		}
 
-		if(pedidoName && brandId) {
+		if(pedidoName && brandName) {
 			var form = $(this);
 			// button loading
 			$("#createPedidoBtn").button('loading');
@@ -75,11 +86,11 @@ $(document).ready(function() {
 	}); // /submit pedido form function
 
 });
-
+/*
 function addPedido() {
 	// pedido id 
 	$(".addPedidoFooter").after('<input type="hidden" name="brandId" id="brandId" value="'+brandId+'" />');
-} // /add pedido function
+} // /add pedido function*/
 
 function editPedido(pedidoId = null) {
 	if(pedidoId) {
@@ -113,7 +124,8 @@ function editPedido(pedidoId = null) {
 
 				// setting the pedido name value 
 				$('#editPedidoName').val(response.pedido_name);
-
+				// brand name
+				$("#editBrandName").val(response.brand_id);				
 				// pedido id 
 				$(".editPedidoFooter").after('<input type="hidden" name="pedidoId" id="pedidoId" value="'+response.pedido_id+'" />');
 
@@ -125,7 +137,18 @@ function editPedido(pedidoId = null) {
 					// remove the form error
 					$('.form-group').removeClass('has-error').removeClass('has-success');			
 
+					var brandName = $("#editBrandName").val();
 					var pedidoName = $('#editPedidoName').val();
+					
+					if(brandName == "") {
+						$("#editBrandName").after('<p class="text-danger">Este campo es obligatorio</p>');
+						$('#editBrandName').closest('.form-group').addClass('has-error');
+					}	else {
+						// remov error text field
+						$("#editBrandName").find('.text-danger').remove();
+						// success out for form 
+						$("#editBrandName").closest('.form-group').addClass('has-success');	  	
+					}	// /else
 
 					if(pedidoName == "") {
 						$("#editPedidoName").after('<p class="text-danger">Este campo es obligatorio</p>');
@@ -137,7 +160,7 @@ function editPedido(pedidoId = null) {
 						$("#editPedidoName").closest('.form-group').addClass('has-success');	  	
 					}
 
-					if(pedidoName) {
+					if(pedidoName && brandName) {
 						var form = $(this);
 
 						// submit btn

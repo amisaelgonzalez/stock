@@ -58,6 +58,8 @@
 
         <li id="navBrand"><a href="brand.php"><i class="glyphicon glyphicon-btc"></i>  Fabricantes</a></li>
 
+        <li id="navPedido"><a href="pedido.php"><i class="glyphicon glyphicon-list-alt"></i>  Pedidos</a></li>
+
         <li id="navCategories"><a href="categories.php"> <i class="glyphicon glyphicon-th-list"></i> Categorías</a></li>        
 
         <li id="navProduct"><a href="product.php"> <i class="glyphicon glyphicon-ruble"></i> Productos </a></li>     

@@ -7,9 +7,9 @@ $valid['success'] = array('success' => false, 'messages' => array());
 if($_POST) {	
 
 	$pedidoName = $_POST['pedidoName'];
-    $brandId = $_POST['brandId']; 
+	$brandName 	= $_POST['brandName'];
 
-	$sql = "INSERT INTO pedidos (pedido_id, pedido_name, brand_id) VALUES (default, '$pedidoName', '$brandId')";
+	$sql = "INSERT INTO pedidos (pedido_id, pedido_name, brand_id, pedido_status) VALUES (default, '$pedidoName', '$brandName', 1)";
 
 	if($connect->query($sql) === TRUE) {
 	 	$valid['success'] = true;

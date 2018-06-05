@@ -11,11 +11,29 @@
 
 	      	<div id="add-pedido-messages"></div>
 
+	      	<div class="form-group">
+	        	<label for="brandName" class="col-sm-3 control-label">Fabricante: </label>
+	        	<label class="col-sm-1 control-label">: </label>
+				    <div class="col-sm-8">
+				      <select class="form-control" id="brandName" name="brandName">
+				      	<option value="">-- Selecciona --</option>
+				      	<?php 
+				      	$sql = "SELECT brand_id, brand_name, brand_active, brand_status FROM brands WHERE brand_status = 1 AND brand_active = 1";
+								$result = $connect->query($sql);
+
+								while($row = $result->fetch_array()) {
+									echo "<option value='".$row[0]."'>".$row[1]."</option>";
+								} // while
+								
+				      	?>
+				      </select>
+				    </div>
+	        </div> <!-- /form-group-->
+
 	        <div class="form-group">
-			    <div class="col-sm-12">
-		        	<label for="pedidoName" class="control-label">Descripción del pedido: </label>
-		        </div>
-			    <div class="col-sm-12">
+	        	<label for="pedidoName" class="col-sm-3 control-label">Descripción del pedido: </label>
+		        <label class="col-sm-1 control-label">: </label>
+			    <div class="col-sm-8">
 				    <input type="text" class="form-control" id="pedidoName" placeholder="Descripción del pedido" name="pedidoName" autocomplete="off">
 				</div>
 	        </div> <!-- /form-group-->
@@ -58,11 +76,30 @@
 					</div>
 
 		      <div class="edit-pedido-result">
+
 		      	<div class="form-group">
-				    <div class="col-sm-12">
-			        	<label for="editPedidoName" class="control-label">Descripción del pedido: </label>
-					</div>
-				    <div class="col-sm-12">
+		        	<label for="editBrandName" class="col-sm-3 control-label">Fabricante: </label>
+		        	<label class="col-sm-1 control-label">: </label>
+					    <div class="col-sm-8">
+					      <select class="form-control" id="editBrandName" name="editBrandName">
+					      	<option value="">-- Selecciona --</option>
+					      	<?php 
+					      	$sql = "SELECT brand_id, brand_name, brand_active, brand_status FROM brands WHERE brand_status = 1 AND brand_active = 1";
+									$result = $connect->query($sql);
+
+									while($row = $result->fetch_array()) {
+										echo "<option value='".$row[0]."'>".$row[1]."</option>";
+									} // while
+									
+					      	?>
+					      </select>
+					    </div>
+		        </div> <!-- /form-group-->
+
+		      	<div class="form-group">
+					<label for="editPedidoName" class="col-sm-3 control-label">Descripción del pedido: </label>
+		        	<label class="col-sm-1 control-label">: </label>
+				    <div class="col-sm-8">
 					    <input type="text" class="form-control" id="editPedidoName" placeholder="Descripción del pedido" name="editPedidoName" autocomplete="off">
 					</div>
 		        </div> <!-- /form-group-->	         	        

@@ -4,7 +4,7 @@ require_once 'core.php';
 
 $pedidoId = $_POST['pedidoId'];
 
-$sql = "SELECT pedido_id, pedido_name FROM pedidos WHERE pedido_id = $pedidoId";
+$sql = "SELECT pedido_id, brand_id, pedido_name FROM pedidos WHERE pedido_id = $pedidoId";
 $result = $connect->query($sql);
 
 if($result->num_rows > 0) { 
