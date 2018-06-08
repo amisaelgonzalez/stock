@@ -249,7 +249,7 @@ function editProduct(productId = null) {
 				// priceMayoreo
 				$("#editPriceMayoreo").val(response.price_mayoreo);
 				// priceMenudeo
-				$("#editPriceMenudeo").val(response.price_menudeo);
+				$("#editPriceMenudeo").val(response.rate);
 				// brand name
 				$("#editBrandName").val(response.brand_id);
 				// category name

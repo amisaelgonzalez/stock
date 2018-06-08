@@ -2,9 +2,9 @@
 
 require_once 'core.php';
 
-$sucursalesId = $_POST['sucursalesId'];
+$creditosId = $_POST['creditosId'];
 
-$sql = "SELECT sucursales_id, sucursales_name, sucursales_status, sucursales_creditos FROM sucursales WHERE sucursales_id = $sucursalesId";
+$sql = "SELECT creditos_id, sucursales_id, creditos_cantidad, creditos_fecha_limite FROM creditos WHERE creditos_id = $creditosId";
 $result = $connect->query($sql);
 
 if($result->num_rows > 0) { 

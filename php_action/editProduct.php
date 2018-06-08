@@ -15,7 +15,7 @@ if($_POST) {
     $productStatus 	= $_POST['editProductStatus'];
 
 				
-	$sql = "UPDATE product SET product_name = '$productName', brand_id = '$brandName', categories_id = '$categoryName', quantity = '$quantity', price_mayoreo = '$priceMayoreo', price_menudeo = '$priceMenudeo', active = '$productStatus', status = 1 WHERE product_id = $productId ";
+	$sql = "UPDATE product SET product_name = '$productName', brand_id = '$brandName', categories_id = '$categoryName', quantity = '$quantity', price_mayoreo = '$priceMayoreo', rate = '$priceMenudeo', active = '$productStatus', status = 1 WHERE product_id = $productId ";
 
 	if($connect->query($sql) === TRUE) {
 		$valid['success'] = true;

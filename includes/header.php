@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta http-equiv="Content-Type" content="text/html; charset=gb18030">
+  <meta charset="UTF-8">
 
 	<title>Sistema de Gestión de Inventario</title>
 
@@ -68,7 +69,9 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-piggy-bank"></i> Cr&eacute;ditos <span class="caret"></span></a>
           <ul class="dropdown-menu">            
             <li id="topNavAddOrder"><a href="orders.php?o=add"> <i class="glyphicon glyphicon-plus"></i> Agregar Cr&eacute;ditos</a></li>            
-            <li id="topNavManageOrder"><a href="orders.php?o=manord"> <i class="glyphicon glyphicon-edit"></i> Gestionar Cr&eacute;ditos</a></li>            
+            <li id="topNavManageOrder"><a href="orders.php?o=manord"> <i class="glyphicon glyphicon-edit"></i> Gestionar Cr&eacute;ditos</a></li>
+
+            <li id="navCreditos"><a href="creditos.php"> <i class="glyphicon glyphicon-list-alt"></i> Gestionar Cr&eacute;ditos Sucursales</a></li>            
           </ul>
         </li> 
 

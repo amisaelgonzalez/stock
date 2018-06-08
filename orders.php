@@ -69,12 +69,25 @@ if($_GET['o'] == 'add') {
 			      <input type="text" class="form-control" id="orderDate" name="orderDate" autocomplete="off" />
 			    </div>
 			  </div> <!--/form-group-->
-			  <div class="form-group">
-			    <label for="clientName" class="col-sm-2 control-label">Nombre del cliente</label>
-			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="clientName" name="clientName" placeholder="Cliente" autocomplete="off" />
-			    </div>
-			  </div> <!--/form-group-->
+
+			    <div class="form-group">
+		        	<label for="clientName" class="col-sm-2 control-label">Sucursal </label>
+					    <div class="col-sm-10">
+					      <select class="form-control" id="clientName" name="clientName">
+					      	<option value="">-- Seleciona--</option>
+					      	<?php 
+					      	$sql = "SELECT sucursales_id, sucursales_name FROM sucursales WHERE sucursales_status = 1";
+									$result = $connect->query($sql);
+
+									while($row = $result->fetch_array()) {
+										echo "<option value='".$row[0]."'>".$row[1]."</option>";
+									} // while
+									
+					      	?>
+					      </select>
+					    </div>
+		        </div> <!-- /form-group-->
+
 			  <div class="form-group">
 			    <label for="clientContact" class="col-sm-2 control-label">Teléfono del cliente</label>
 			    <div class="col-sm-10">
@@ -270,12 +283,31 @@ if($_GET['o'] == 'add') {
 			      <input type="text" class="form-control" id="orderDate" name="orderDate" autocomplete="off" value="<?php echo $data[1] ?>" />
 			    </div>
 			  </div> <!--/form-group-->
-			  <div class="form-group">
-			    <label for="clientName" class="col-sm-2 control-label">Nombre del cliente</label>
-			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="clientName" name="clientName" placeholder="Cliente" autocomplete="off" value="<?php echo $data[2] ?>" />
-			    </div>
-			  </div> <!--/form-group-->
+
+			  <input type="hidden" class="form-control" id="clientNameAct" name="clientNameAct" value="<?php echo $data[2] ?>" />
+			
+				<div class="form-group">
+		        	<label for="clientName" class="col-sm-2 control-label">Sucursal: </label>
+					    <div class="col-sm-10">
+					      <select class="form-control" id="clientName" name="clientName">
+					      	<option value="">-- Seleciona--</option>
+					      	<?php 
+					      	$sql = "SELECT sucursales_id, sucursales_name FROM sucursales WHERE sucursales_status = 1";
+									$result = $connect->query($sql);
+
+									while($row = $result->fetch_array()) {
+										if ($data[2] == $row[0]) {
+											echo "<option value='".$row[0]."' selected>".$row[1]."</option>";
+										} else {
+											echo "<option value='".$row[0]."'>".$row[1]."</option>";
+										}
+									} // while
+									
+					      	?>
+					      </select>
+					    </div>
+		        </div> <!-- /form-group-->	
+
 			  <div class="form-group">
 			    <label for="clientContact" class="col-sm-2 control-label">Teléfono del cliente</label>
 			    <div class="col-sm-10">
@@ -377,6 +409,7 @@ if($_GET['o'] == 'add') {
 				    <div class="col-sm-9">
 				      <input type="text" class="form-control" id="totalAmount" name="totalAmount" disabled="true" value="<?php echo $data[6] ?>" />
 				      <input type="hidden" class="form-control" id="totalAmountValue" name="totalAmountValue" value="<?php echo $data[6] ?>"  />
+				      <input type="hidden" class="form-control" id="totalAmountValueAct" name="totalAmountValueAct" value="<?php echo $data[6] ?>"  />
 				    </div>
 				  </div> <!--/form-group-->			  
 				  <div class="form-group">

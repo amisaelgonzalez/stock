@@ -7,8 +7,11 @@ $valid['success'] = array('success' => false, 'messages' => array());
 if($_POST) {	
 
 	$sucursalesName = $_POST['sucursalesName'];
+	//$sucursalesCredito = $_POST['sucursalesCredito'];
 
-	$sql = "INSERT INTO sucursales (sucursales_name, sucursales_status) VALUES ('$sucursalesName', 1)";
+	//$sucursalesFechaLimite = date('Y-m-d', strtotime($_POST['sucursalesFechaLimite']));
+	
+	$sql = "INSERT INTO sucursales (sucursales_name, sucursales_status, sucursales_creditos) VALUES ('$sucursalesName', 1, 0)";
 
 	if($connect->query($sql) === TRUE) {
 	 	$valid['success'] = true;
