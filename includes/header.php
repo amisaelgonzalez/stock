@@ -55,27 +55,28 @@ switch ($_SESSION['rol']) {
 ?>
 <ul class="nav navbar-nav navbar-right">
 
-        <li id="navDashboard"><a href="index.php"><i class="glyphicon glyphicon-list-alt"></i>  Inicio</a></li>
-
+       
+        <li id="navDashboard"><a href="index.php"><i class="glyphicon glyphicon-list-alt"></i>  Inicio</a></li>        
+        
         <li id="navSucursales"><a href="sucursales.php"><i class="glyphicon glyphicon-home"></i>  Sucursales</a></li>
 
         <li id="navBrand"><a href="brand.php"><i class="glyphicon glyphicon-btc"></i>  Fabricantes</a></li>
 
         <li id="navPedido"><a href="pedido.php"><i class="glyphicon glyphicon-list-alt"></i>  Pedidos</a></li>
 
-        <li id="navCategories"><a href="categories.php"> <i class="glyphicon glyphicon-th-list"></i> Categorías</a></li>
+        <li id="navCategories"><a href="categories.php"> <i class="glyphicon glyphicon-th-list"></i> Categorías</a></li>        
 
-        <li id="navProduct"><a href="product.php"> <i class="glyphicon glyphicon-ruble"></i> Productos </a></li>
-
-
+        <li id="navProduct"><a href="product.php"> <i class="glyphicon glyphicon-ruble"></i> Productos </a></li>     
 
         <li class="dropdown" id="navOrder">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-piggy-bank"></i> Cr&eacute;ditos <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li id="topNavAddOrder"><a href="orders.php?o=add"> <i class="glyphicon glyphicon-plus"></i> Agregar Cr&eacute;ditos</a></li>
+          <ul class="dropdown-menu">            
+            <li id="topNavAddOrder"><a href="orders.php?o=add"> <i class="glyphicon glyphicon-plus"></i> Agregar Cr&eacute;ditos</a></li>            
             <li id="topNavManageOrder"><a href="orders.php?o=manord"> <i class="glyphicon glyphicon-edit"></i> Gestionar Cr&eacute;ditos</a></li>
+
+            <li id="navCreditos"><a href="creditos.php"> <i class="glyphicon glyphicon-list-alt"></i> Gestionar Cr&eacute;ditos Sucursales</a></li>            
           </ul>
-        </li>
+        </li> 
 
         <li id="navReport"><a href="report.php"> <i class="glyphicon glyphicon-check"></i> Reportes </a></li>
 
@@ -83,11 +84,11 @@ switch ($_SESSION['rol']) {
 
         <li class="dropdown" id="navSetting">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-cog"></i> <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li id="topNavSetting"><a href="setting.php"> <i class="glyphicon glyphicon-wrench"></i> Configuración</a></li>
-            <li id="topNavLogout"><a href="logout.php"> <i class="glyphicon glyphicon-log-out"></i> Salir</a></li>
+          <ul class="dropdown-menu">            
+            <li id="topNavSetting"><a href="setting.php"> <i class="glyphicon glyphicon-wrench"></i> Configuración</a></li>            
+            <li id="topNavLogout"><a href="logout.php"> <i class="glyphicon glyphicon-log-out"></i> Salir</a></li>            
           </ul>
-        </li>
+        </li> 
       </ul>
 
 <?php 
@@ -101,12 +102,12 @@ switch ($_SESSION['rol']) {
 
 
 
-        <li id="navPedido"><a href="pedido.php"><i class="glyphicon glyphicon-list-alt"></i>  Pedidos</a></li>
+        <li id="navPedido"><a href="none.php"><i class="glyphicon glyphicon-list-alt"></i>  Pedidos</a></li>
 
 
-        <li id="navProduct"><a href="product.php"> <i class="glyphicon glyphicon-ruble"></i> Productos </a></li>
+        <li id="navProduct"><a href="none.php"> <i class="glyphicon glyphicon-ruble"></i> Productos </a></li>
 
-        <li id="navUsers"><a href="users.php"><i class="glyphicon glyphicon-user"></i> Usuarios </a></li>
+        <li id="navUsers"><a href="users_ad.php"><i class="glyphicon glyphicon-user"></i> Usuarios </a></li>
 
         <li class="dropdown" id="navSetting">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-cog"></i> <span class="caret"></span></a>

@@ -8,15 +8,14 @@ if($_POST) {
 
 	$passwordAdmin = md5($_POST['passwordAdmin']);
     $password = md5($_POST['password1']);
-    $usersId = $_POST['usersId'];
-
+    $usersAdId = $_POST['usersAdId'];
     $user_id = $_SESSION['userId'];
-
-	$sqlAdmin = "SELECT user_id FROM users WHERE password = '$passwordAdmin' AND user_id = '$user_id";
+    
+	$sqlAdmin = "SELECT user_id FROM users WHERE password = '$passwordAdmin' AND user_id = '$user_id'";
 	$result = $connect->query($sqlAdmin);
 
 	if($result->num_rows > 0) {
-		$sql = "UPDATE users SET password = '$password' WHERE user_id = '$usersId'";
+		$sql = "UPDATE users SET password = '$password' WHERE user_id = '$usersAdId'";
 
 		if($connect->query($sql) === TRUE) {
 		 	$valid['success'] = true;
