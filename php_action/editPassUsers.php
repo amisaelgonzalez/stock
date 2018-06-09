@@ -12,7 +12,7 @@ if($_POST) {
 
     $user_id = $_SESSION['userId'];
 
-	$sqlAdmin = "SELECT user_id FROM users WHERE password = '$passwordAdmin' AND user_id = '$user_id";
+	$sqlAdmin = "SELECT user_id FROM users WHERE password = '$passwordAdmin' AND user_id = '$user_id'";
 	$result = $connect->query($sqlAdmin);
 
 	if($result->num_rows > 0) {
