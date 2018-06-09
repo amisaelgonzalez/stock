@@ -173,7 +173,7 @@ function editUsersAd(usersAdId = null) {
 						$("#editEmail").closest('.form-group').addClass('has-success');	  	
 					}
 
-					if(usersName && email) {
+					if(usersAdName && email) {
 						var form = $(this);
 
 						// submit btn
