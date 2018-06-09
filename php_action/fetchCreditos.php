@@ -1,6 +1,6 @@
 <?php 	
 
-require_once 'core.php';
+require_once '../config/core.php';
 
 $sql = "SELECT c.creditos_id, u.username, s.sucursales_name, c.creditos_cantidad, c.creditos_fecha_limite FROM creditos c INNER JOIN sucursales s ON s.sucursales_id = c.sucursales_id INNER JOIN users u ON c.user_id = u.user_id WHERE c.creditos_status = 1";
 $result = $connect->query($sql);

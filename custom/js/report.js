@@ -56,4 +56,46 @@ $(document).ready(function() {
 		return false;
 	});
 
+
+
+	$("#getOrderPorSucursalesReportForm").unbind('submit').bind('submit', function() {
+		
+		var sucursalId = $("#sucursalId").val();
+
+		if(sucursalId == "") {
+			alert("ee");
+			$("#sucursalId").closest('.form-group').addClass('has-error');
+			$("#sucursalId").after('<p class="text-danger">Debes seleccionar una sucursal</p>');
+		} else {
+			$(".form-group").removeClass('has-error');
+			$(".text-danger").remove();
+alert("rr");
+			var form = $(this);
+
+			$.ajax({
+				url: form.attr('action'),
+				type: form.attr('method'),
+				data: form.serialize(),
+				dataType: 'text',
+				success:function(response) {
+					var mywindow = window.open('', 'Sistema de Gestión de Inventario', 'height=400,width=600');
+			        mywindow.document.write('<html><head><title>Hoja de informe de pedidos por sucursal</title>');
+			        mywindow.document.write('</head><body>');
+			        mywindow.document.write(response);
+			        mywindow.document.write('</body></html>');
+
+			        mywindow.document.close(); // necessary for IE >= 10
+			        mywindow.focus(); // necessary for IE >= 10
+
+			        mywindow.print();
+			        mywindow.close();
+				} // /success
+			});	// /ajax
+
+		} // /else
+
+		return false;
+	});
+
+
 });

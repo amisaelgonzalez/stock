@@ -1,6 +1,6 @@
 <?php 	
 
-require_once 'core.php';
+require_once '../config/core.php';
 
 $productId = $_POST['productId'];
 

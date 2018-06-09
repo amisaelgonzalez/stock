@@ -1,6 +1,6 @@
 <?php 	
 
-require_once 'core.php';
+require_once '../config/core.php';
 
 $sql = "SELECT o.order_id, o.order_date, s.sucursales_name, o.client_contact, o.payment_status FROM orders o INNER JOIN sucursales s ON s.sucursales_id = o.client_name WHERE o.order_status = 1";
 $result = $connect->query($sql);

@@ -1,6 +1,6 @@
 <?php
 
-require_once 'core.php';
+require_once '../config/core.php';
 
 $sql = "SELECT product.product_id, product.product_name, product.product_image, product.brand_id,
  		product.categories_id, product.quantity, product.price_mayoreo, product.rate, 

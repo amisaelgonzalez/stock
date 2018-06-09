@@ -1,7 +1,7 @@
-<?php require_once 'php_action/core.php'; ?>
+<?php require_once 'congif/core.php'; ?>
 <!DOCTYPE html>
 <html>
-<head><meta http-equiv="Content-Type" content="text/html; charset=gb18030">
+<head><meta http-equiv="Content-Type" content="text/html">
   <meta charset="UTF-8">
 
 	<title>Sistema de Gestión de Inventario</title>

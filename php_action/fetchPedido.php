@@ -1,6 +1,6 @@
 <?php 	
 
-require_once 'core.php';
+require_once '../config/core.php';
 
 $sql = "SELECT p.pedido_id, p.pedido_name, p.brand_id, b.brand_name FROM pedidos p INNER JOIN brands b ON p.brand_id = b.brand_id WHERE pedido_status = 1";
 $result = $connect->query($sql);

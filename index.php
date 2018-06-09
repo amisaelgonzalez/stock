@@ -1,5 +1,5 @@
 <?php 
-require_once 'php_action/db_connect.php';
+require_once 'config/db_connect.php';
 
 session_start();
 
@@ -55,6 +55,7 @@ if($_POST) {
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
 	<title>Sistema de Gestión de Inventario</title>
 
 	<!-- bootstrap -->

@@ -1,6 +1,6 @@
 <?php 	
 
-require_once 'core.php';
+require_once '../config/core.php';
 
 $sql = "SELECT s.user_id, s.username, s.email, s.rol, s.users_status, s.sucursales_id, su.sucursales_name FROM users s LEFT JOIN sucursales su ON s.sucursales_id = su.sucursales_id";
 

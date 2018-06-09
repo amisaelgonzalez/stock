@@ -1,4 +1,4 @@
-<?php require_once 'php_action/db_connect.php' ?>
+<?php require_once 'config/db_connect.php' ?>
 <?php require_once 'includes/header.php'; ?>
 <?php require_once 'modal/productModal.php'; ?>
 

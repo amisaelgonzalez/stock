@@ -1,6 +1,6 @@
 <?php 	
 
-require_once 'core.php';
+require_once '../config/core.php';
 
 $sql = "SELECT sucursales_id, sucursales_name, sucursales_creditos FROM sucursales WHERE sucursales_status = 1";
 $result = $connect->query($sql);
