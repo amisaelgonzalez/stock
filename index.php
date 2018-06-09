@@ -35,9 +35,11 @@ if($_POST) {
 			if($mainResult->num_rows == 1) {
 				$value = $mainResult->fetch_assoc();
 				$user_id = $value['user_id'];
+                $rol     = $value['rol'];
 
-				// set session
-				$_SESSION['userId'] = $user_id;
+                // set session
+                $_SESSION['userId'] = $user_id;
+                $_SESSION['rol']    = $rol;
 
 				header('location: dashboard.php');	
 			} else{
