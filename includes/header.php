@@ -124,11 +124,11 @@ switch ($_SESSION['rol']) {
 ?>
 <ul class="nav navbar-nav navbar-right">
 
-        <li id="navDashboard"><a href="index.php"><i class="glyphicon glyphicon-list-alt"></i>  Inicio</a></li>
+        <li id="navDashboard"><a href="index.php"><i class="glyphicon glyphicon-list-alt"></i> Inicio </a></li>
 
 
 
-        <li id="navProduct"><a href="product.php"> <i class="glyphicon glyphicon-ruble"></i> Productos </a></li>
+        <li id="navProduct"><a href="stock.php"> <i class="glyphicon glyphicon-ruble"></i> Stock </a></li>
 
 
 
