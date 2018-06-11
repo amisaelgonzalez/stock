@@ -101,11 +101,11 @@ switch ($_SESSION['rol']) {
         <li id="navDashboard"><a href="index.php"><i class="glyphicon glyphicon-list-alt"></i>  Inicio</a></li>
 
 
+        <li id="navCreditos"><a href="creditos-surcusal.php"> <i class="glyphicon glyphicon-piggy-bank"></i> Créditos  </a></li>
+        <li id="navPedido"><a href="pedido-surcusal.php"><i class="glyphicon glyphicon-list-alt"></i>  Pedidos</a></li>
 
-        <li id="navPedido"><a href="none.php"><i class="glyphicon glyphicon-list-alt"></i>  Pedidos</a></li>
 
-
-        <li id="navProduct"><a href="none.php"> <i class="glyphicon glyphicon-ruble"></i> Productos </a></li>
+        <li id="navProduct"><a href="product-surcusal.php"> <i class="glyphicon glyphicon-ruble"></i> Productos </a></li>
 
         <li id="navUsers"><a href="users_ad.php"><i class="glyphicon glyphicon-user"></i> Usuarios </a></li>
 
