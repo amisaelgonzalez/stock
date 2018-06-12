@@ -152,7 +152,7 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!-- /active usersAd -->
-ct
+
 <!-- edit pass usersAd -->
 <div class="modal fade" id="editPassUsersAdModel" tabindex="-1" role="dialog">
   <div class="modal-dialog">
