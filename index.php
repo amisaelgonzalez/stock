@@ -54,11 +54,18 @@ if($_POST) {
 				$user_id = $value['user_id'];
                 $rol     = $value['rol'];
 
+                if ($rol != 2) {
+              
                 // set session
                 $_SESSION['userId'] = $user_id;
                 $_SESSION['rol']    = $rol;
 
 				header('location: dashboard.php');	
+
+                }else{
+                	 echo'<script type="text/javascript"> alert("ROL 2 EN DESARROLLO"); window.location.href="index.php"; </script>';
+                }
+
 			} else{
 				
 				$errors[] = "Combinación incorrecta de nombre de usuario y/o contraseña";
