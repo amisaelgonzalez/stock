@@ -12,7 +12,8 @@ log.txt
 .vscode/
 npm-debug.log*
 
-
+config/db_connect.php
+config/db_connect2.php
 $RECYCLE.BIN/
 
 .DS_Store
