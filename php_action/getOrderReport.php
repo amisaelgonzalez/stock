@@ -13,7 +13,7 @@ if($_POST) {
 	$format = DateTime::createFromFormat('m/d/Y',$endDate);
 	$end_date = $format->format("Y-m-d");
 
-	$sql = "SELECT * FROM orders WHERE order_date >= '$start_date' AND order_date <= '$end_date' and order_status = 1";
+	$sql = "SELECT o.order_date as order_date, s.sucursales_name as client_name, o.client_contact as client_contact, o.grand_total as grand_total FROM orders o INNER JOIN sucursales s ON s.sucursales_id = o.client_name WHERE o.order_date >= '$start_date' AND o.order_date <= '$end_date' and o.order_status = 1";
 	$query = $connect->query($sql);
 
 	$table = '

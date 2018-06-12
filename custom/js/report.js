@@ -63,13 +63,11 @@ $(document).ready(function() {
 		var sucursalId = $("#sucursalId").val();
 
 		if(sucursalId == "") {
-			alert("ee");
 			$("#sucursalId").closest('.form-group').addClass('has-error');
 			$("#sucursalId").after('<p class="text-danger">Debes seleccionar una sucursal</p>');
 		} else {
 			$(".form-group").removeClass('has-error');
 			$(".text-danger").remove();
-alert("rr");
 			var form = $(this);
 
 			$.ajax({

@@ -1,8 +1,9 @@
 <?php 	
 
 require_once '../config/core.php';
+$user_id = $_SESSION['userId'];
 
-$sql = "SELECT s.user_id, s.username, s.email, s.rol, s.users_status, s.sucursales_id, su.sucursales_name FROM users s LEFT JOIN sucursales su ON s.sucursales_id = su.sucursales_id WHERE s.rol = 3";
+$sql = "SELECT u.user_id, u.username, u.email, u.rol, u.users_status, u.sucursales_id, su.sucursales_name FROM users u LEFT JOIN sucursales su ON u.sucursales_id = su.sucursales_id WHERE u.rol = 3 AND u.creado_por = '$user_id'";
 
 $result = $connect->query($sql);
 

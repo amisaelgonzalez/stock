@@ -1,4 +1,5 @@
 <?php require_once 'includes/header.php'; ?>
+<?php include ("notification.php"); ?>  
 
 <div class="row">
 	<div class="col-md-12">

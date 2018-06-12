@@ -1,8 +1,8 @@
 <?php require_once 'config/core.php';?>
 <!DOCTYPE html>
 <html>
-<head><meta http-equiv="Content-Type" content="text/html; charset=gb18030">
-
+<head><meta http-equiv="Content-Type" content="text/html">
+<meta charset="UTF-8">
   <title>Sistema de Gestión de Inventario</title>
 
   <!-- bootstrap -->
@@ -31,8 +31,23 @@
   <script src="assests/bootstrap/js/bootstrap.min.js"></script>
 
 </head>
-<body>
 
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.btn-Notification').on('click', function(){
+        var ContainerNoty=$('.container-notifications');
+        var NotificationArea=$('.NotificationArea');
+        if(NotificationArea.hasClass('NotificationArea-show')&&ContainerNoty.hasClass('container-notifications-show')){
+            NotificationArea.removeClass('NotificationArea-show');
+            ContainerNoty.removeClass('container-notifications-show');
+        }else{
+            NotificationArea.addClass('NotificationArea-show');
+            ContainerNoty.addClass('container-notifications-show');
+        }
+    });
+})
+</script>
+<body>
 
   <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
@@ -82,6 +97,15 @@ switch ($_SESSION['rol']) {
 
         <li id="navUsers"><a href="users.php"><i class="glyphicon glyphicon-user"></i> Usuarios </a></li>
 
+        <!-- Notifications Menu -->
+          <li class="dropdown notifications-menu btn-Notification" id="notifications">
+            <!-- Menu toggle button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-bell-o"></i>
+<!--              <span class="label label-primary">10</span>-->
+            </a>
+          </li>
+
         <li class="dropdown" id="navSetting">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-cog"></i> <span class="caret"></span></a>
           <ul class="dropdown-menu">            
@@ -109,6 +133,15 @@ switch ($_SESSION['rol']) {
 
         <li id="navUsers"><a href="users_ad.php"><i class="glyphicon glyphicon-user"></i> Usuarios </a></li>
 
+        <!-- Notifications Menu -->
+        <li class="dropdown notifications-menu btn-Notification" id="notifications">
+          <!-- Menu toggle button -->
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-bell-o"></i>
+<!--              <span class="label label-primary">10</span>-->
+          </a>
+        </li>
+
         <li class="dropdown" id="navSetting">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-cog"></i> <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -135,8 +168,8 @@ switch ($_SESSION['rol']) {
         <li class="dropdown" id="navOrder">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-piggy-bank"></i> Cr&eacute;ditos <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li id="topNavAddOrder"><a href="orders.php?o=add"> <i class="glyphicon glyphicon-plus"></i> Agregar Cr&eacute;ditos</a></li>
-            <li id="topNavManageOrder"><a href="orders.php?o=manord"> <i class="glyphicon glyphicon-edit"></i> Gestionar Cr&eacute;ditos</a></li>
+            <li id="topNavAddOrder"><a href="orders_users.php?o=add"> <i class="glyphicon glyphicon-plus"></i> Agregar Cr&eacute;ditos</a></li>
+            <li id="topNavManageOrder"><a href="orders_users.php?o=manord"> <i class="glyphicon glyphicon-edit"></i> Gestionar Cr&eacute;ditos</a></li>
           </ul>
         </li>
 

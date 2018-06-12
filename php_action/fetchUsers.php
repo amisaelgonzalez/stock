@@ -2,7 +2,7 @@
 
 require_once '../config/core.php';
 
-$sql = "SELECT s.user_id, s.username, s.email, s.rol, s.users_status, s.sucursales_id, su.sucursales_name FROM users s LEFT JOIN sucursales su ON s.sucursales_id = su.sucursales_id";
+$sql = "SELECT u.user_id, u.username, u.email, u.rol, u.users_status, u.sucursales_id, su.sucursales_name FROM users u LEFT JOIN sucursales su ON u.sucursales_id = su.sucursales_id";
 
 $result = $connect->query($sql);
 
@@ -32,11 +32,13 @@ if($result->num_rows > 0) {
 	if ($row[3] == 1) {
 		$rolUsers = "Super admin";
 	}elseif ($row[3] == 2) {
-		$rolUsers = "administrador";
+		$rolUsers = "Administrador sucursal";
 		// sucursal 
 		$sucursalUsers = $row[6];		
 	}elseif ($row[3] == 3) {
-		$rolUsers = "usuario";
+		$rolUsers = "Usuario";
+	}elseif ($row[3] == 4) {
+		$rolUsers = "Adminstrador créditos";
 	}
 
  	// active 

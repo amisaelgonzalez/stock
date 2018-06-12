@@ -4,14 +4,14 @@ require_once '../config/core.php';
 
 $orderId = $_POST['orderId'];
 
-$sql = "SELECT o.order_date, s.sucursales_name, o.client_contact, o.sub_total, o.vat, o.total_amount, o.discount, o.grand_total, o.paid, o.due FROM orders o INNER JOIN sucursales s ON s.sucursales_id = o.client_name WHERE o.order_id = $orderId";
+$sql = "SELECT order_date, client_name, client_contact, sub_total, vat, total_amount, discount, grand_total, paid, due FROM orders_user WHERE order_id = $orderId";
 
 $orderResult = $connect->query($sql);
 $orderData = $orderResult->fetch_array();
 
 $orderDate = $orderData[0];
 $clientName = $orderData[1];
-$clientContact = $orderData[2]; 
+//$clientContact = $orderData[2]; 
 $subTotal = $orderData[3];
 $vat = $orderData[4];
 $totalAmount = $orderData[5]; 
@@ -21,10 +21,10 @@ $paid = $orderData[8];
 $due = $orderData[9];
 
 
-$orderItemSql = "SELECT order_item.product_id, order_item.rate, order_item.quantity, order_item.total,
-product.product_name FROM order_item
-	INNER JOIN product ON order_item.product_id = product.product_id 
- WHERE order_item.order_id = $orderId";
+$orderItemSql = "SELECT order_user_item.product_id, order_user_item.rate, order_user_item.quantity, order_user_item.total,
+product.product_name FROM order_user_item
+	INNER JOIN product ON order_user_item.product_id = product.product_id 
+ WHERE order_user_item.order_id = $orderId";
 $orderItemResult = $connect->query($orderItemSql);
 
  $table = '
@@ -35,8 +35,7 @@ $orderItemResult = $connect->query($orderItemSql);
 
 			<center>
 				Fecha : '.$orderDate.'
-				<center>Cliente : '.$clientName.'</center>
-				Teléfono : '.$clientContact.'
+				<center>Usuario : '.$clientName.'</center>
 			</center>		
 			</th>
 				

@@ -41,8 +41,9 @@
 				    <div class="col-sm-8">
 				      <select class="form-control" id="rol" name="rol" onchange="habilitarCombo(this.value);">
 				      	<option value="">-- Seleciona--</option>
-				      	<option value="1">Super Admin</option>
-				      	<option value="2">Adminstrador</option>
+				      	<option value="1">Super admin</option>
+				      	<option value="4">Adminstrador créditos</option>
+				      	<option value="2">Adminstrador sucursal</option>
 				      	<option value="3">Usuario</option>
 				      </select>
 				    </div>
@@ -128,8 +129,9 @@
 					    <div class="col-sm-8">
 					      <select class="form-control" id="editRol" name="editRol" onchange="habilitarCombo(this.value);">
 					      	<option value="">-- Seleciona--</option>
-					      	<option value="1">Super Admin</option>
-					      	<option value="2">Adminstrador</option>
+					      	<option value="1">Super admin</option>
+					      	<option value="4">Adminstrador créditos</option>
+					      	<option value="2">Adminstrador sucursal</option>
 					      	<option value="3">Usuario</option>
 					      </select>
 					    </div>

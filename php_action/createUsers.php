@@ -14,8 +14,9 @@ if($_POST) {
     if ($usersRol != 2) {
     	$sucursal = null;
     }
+    $user_id = $_SESSION['userId'];
 
-	$sql = "INSERT INTO users (username, password, users_status, email, rol, sucursales_id) VALUES ('$usersName', '$password', 1, '$usersEmail', '$usersRol', '$sucursal')";
+	$sql = "INSERT INTO users (username, password, users_status, email, rol, sucursales_id, creado_por) VALUES ('$usersName', '$password', 1, '$usersEmail', '$usersRol', '$sucursal', '$user_id')";
 
 	if($connect->query($sql) === TRUE) {
 	 	$valid['success'] = true;

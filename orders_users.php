@@ -1,26 +1,17 @@
 <?php 
-if (isset($_GET['o'])) {
-
-	if($_GET['o'] == 'add') { 
-	// add order
-		echo "<div class='div-request div-hide'>add</div>";
-	} else if($_GET['o'] == 'manord') { 
-		echo "<div class='div-request div-hide'>manord</div>";
-	} else if($_GET['o'] == 'editOrd') { 
-		echo "<div class='div-request div-hide'>editOrd</div>";
-	} else {
-		header('location: orders.php?o=manord');
-		exit;
-	}
-
-} else {
-	header('location: orders.php?o=manord');
-	exit;
-}
-
 require_once 'config/db_connect.php'; 
 require_once 'includes/header.php'; 
 include ("notification.php");
+
+if($_GET['o'] == 'add') { 
+// add order
+	echo "<div class='div-request div-hide'>add</div>";
+} else if($_GET['o'] == 'manord') { 
+	echo "<div class='div-request div-hide'>manord</div>";
+} else if($_GET['o'] == 'editOrd') { 
+	echo "<div class='div-request div-hide'>editOrd</div>";
+} // /else manage order
+
 
 ?>
 
@@ -66,12 +57,12 @@ include ("notification.php");
 	<div class="panel-body">
 			
 		<?php if($_GET['o'] == 'add') { 
-			// add order
+			// add order Users
 			?>			
 
 			<div class="success-messages"></div> <!--/success-messages-->
 
-  		<form class="form-horizontal" method="POST" action="php_action/createOrder.php" id="createOrderForm">
+  		<form class="form-horizontal" method="POST" action="php_action/createOrderUsers.php" id="createOrderForm">
 
 			  <div class="form-group">
 			    <label for="orderDate" class="col-sm-2 control-label">Fecha de cr&eacute;dito</label>
@@ -80,31 +71,16 @@ include ("notification.php");
 			    </div>
 			  </div> <!--/form-group-->
 
-			    <div class="form-group">
-		        	<label for="clientName" class="col-sm-2 control-label">Sucursal </label>
-					    <div class="col-sm-10">
-					      <select class="form-control" id="clientName" name="clientName">
-					      	<option value="">-- Seleciona--</option>
-					      	<?php 
-					      	$sql = "SELECT sucursales_id, sucursales_name FROM sucursales WHERE sucursales_status = 1";
-									$result = $connect->query($sql);
-
-									while($row = $result->fetch_array()) {
-										echo "<option value='".$row[0]."'>".$row[1]."</option>";
-									} // while
-									
-					      	?>
-					      </select>
-					    </div>
-		        </div> <!-- /form-group-->
-
 			  <div class="form-group">
-			    <label for="clientContact" class="col-sm-2 control-label">Teléfono del cliente</label>
+			    <label for="clientName" class="col-sm-2 control-label">Usuario </label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="clientContact" name="clientContact" placeholder="Teléfono" autocomplete="off" />
+			      <input type="text" class="form-control" id="clientName" name="clientName" autocomplete="off" disabled />
 			    </div>
-			  </div> <!--/form-group-->			  
+			  </div> <!--/form-group-->
 
+
+			  <input type="hidden" class="form-control" id="clientContact" name="clientContact" placeholder="Teléfono" autocomplete="off" />
+			  
 			  <table class="table" id="productTable">
 			  	<thead>
 			  		<tr>			  			
@@ -260,7 +236,6 @@ include ("notification.php");
 						<th>#</th>
 						<th>Fecha</th>
 						<th>Cliente</th>
-						<th>Teléfono</th>
 						<th>Total de productos</th>
 						<th>Estado del pago</th>
 						<th>Opciones</th>
@@ -276,12 +251,12 @@ include ("notification.php");
 			
 			<div class="success-messages"></div> <!--/success-messages-->
 
-  		<form class="form-horizontal" method="POST" action="php_action/editOrder.php" id="editOrderForm">
+  		<form class="form-horizontal" method="POST" action="php_action/editOrderUsers.php" id="editOrderForm">
 
   			<?php $orderId = $_GET['i'];
 
-  			$sql = "SELECT orders.order_id, orders.order_date, orders.client_name, orders.client_contact, orders.sub_total, orders.vat, orders.total_amount, orders.discount, orders.grand_total, orders.paid, orders.due, orders.payment_type, orders.payment_status FROM orders 	
-					WHERE orders.order_id = {$orderId}";
+  			$sql = "SELECT orders_user.order_id, orders_user.order_date, orders_user.client_name, orders_user.client_contact, orders_user.sub_total, orders_user.vat, orders_user.total_amount, orders_user.discount, orders_user.grand_total, orders_user.paid, orders_user.due, orders_user.payment_type, orders_user.payment_status FROM orders_user 	
+					WHERE orders_user.order_id = {$orderId}";
 
 				$result = $connect->query($sql);
 				$data = $result->fetch_row();				
@@ -296,35 +271,15 @@ include ("notification.php");
 
 			  <input type="hidden" class="form-control" id="clientNameAct" name="clientNameAct" value="<?php echo $data[2] ?>" />
 			
-				<div class="form-group">
-		        	<label for="clientName" class="col-sm-2 control-label">Sucursal: </label>
-					    <div class="col-sm-10">
-					      <select class="form-control" id="clientName" name="clientName">
-					      	<option value="">-- Seleciona--</option>
-					      	<?php 
-					      	$sql = "SELECT sucursales_id, sucursales_name FROM sucursales WHERE sucursales_status = 1";
-									$result = $connect->query($sql);
-
-									while($row = $result->fetch_array()) {
-										if ($data[2] == $row[0]) {
-											echo "<option value='".$row[0]."' selected>".$row[1]."</option>";
-										} else {
-											echo "<option value='".$row[0]."'>".$row[1]."</option>";
-										}
-									} // while
-									
-					      	?>
-					      </select>
-					    </div>
-		        </div> <!-- /form-group-->	
-
 			  <div class="form-group">
-			    <label for="clientContact" class="col-sm-2 control-label">Teléfono del cliente</label>
+			    <label for="clientName" class="col-sm-2 control-label">Usuario </label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="clientContact" name="clientContact" placeholder="Teléfono" autocomplete="off" value="<?php echo $data[3] ?>" />
+			      <input type="text" class="form-control" id="clientName" name="clientName" autocomplete="off" disabled value="<?php echo $data[2] ?>" />
 			    </div>
-			  </div> <!--/form-group-->			  
+			  </div> <!--/form-group-->
 
+			  <input type="hidden" class="form-control" id="clientContact" name="clientContact" placeholder="Teléfono" autocomplete="off" value="<?php echo $data[3] ?>" />
+			  
 			  <table class="table" id="productTable">
 			  	<thead>
 			  		<tr>			  			
@@ -338,7 +293,7 @@ include ("notification.php");
 			  	<tbody>
 			  		<?php
 
-			  		$orderItemSql = "SELECT order_item.order_item_id, order_item.order_id, order_item.product_id, order_item.quantity, order_item.rate, order_item.total FROM order_item WHERE order_item.order_id = {$orderId}";
+			  		$orderItemSql = "SELECT order_user_item.order_item_id, order_user_item.order_id, order_user_item.product_id, order_user_item.quantity, order_user_item.rate, order_user_item.total FROM order_user_item WHERE order_user_item.order_id = {$orderId}";
 						$orderItemResult = $connect->query($orderItemSql);
 						// $orderItemData = $orderItemResult->fetch_all();						
 						
@@ -591,7 +546,7 @@ include ("notification.php");
 <!-- /remove order-->
 
 
-<script src="custom/js/order.js"></script>
+<script src="custom/js/orderUsers.js"></script>
 
 <?php require_once 'includes/footer.php'; ?>
 

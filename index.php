@@ -4,7 +4,24 @@ require_once 'config/db_connect.php';
 session_start();
 
 if(isset($_SESSION['userId'])) {
-	header('location: dashboard.php');	
+	switch ($_SESSION['rol']) {
+		case '1':
+			header('location: dashboard.php');
+			break;
+		case '2':
+			header('location: dashboard.php');
+			break;
+		case '3':
+			header('location: stock.php');
+			break;
+		case '4':
+			header('location: orders.php?o=manord');
+			break;
+
+		default:
+			# code...
+			break;
+	}
 }
 
 $errors = array();

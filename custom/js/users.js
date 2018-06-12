@@ -175,7 +175,6 @@ function editUsers(usersId = null) {
 				$('#editEmail').val(response.email);
 				// setting the users rol value
 				$('#editRol').val(response.rol);
-
 				// setting the users sucursal value
 				$('#editSucursal').val(response.sucursales_id);
 
@@ -233,9 +232,9 @@ function editUsers(usersId = null) {
 						// success out for form 
 						$("#editRol").closest('.form-group').addClass('has-success');	  	
 					}
-
+					console.log(editSucursal);
 					requireSucursal = true;
-					if(rol == 2 && editSucursal == "") {
+					if(rol == 2 && (editSucursal == "" || editSucursal == null)) {
 						requireSucursal = false;
 						$("#editSucursal").after('<p class="text-danger">Este campo es obligatorio</p>');
 
@@ -258,10 +257,9 @@ function editUsers(usersId = null) {
 							type: form.attr('method'),
 							data: form.serialize(),
 							dataType: 'json',
-							success:function(response) {
-
-								if(response.success == true) {
-									console.log(response);
+							success:function(res) {
+							console.log(res);
+								if(res.success == true) {
 									// submit btn
 									$('#editUsersBtn').button('reset');
 
@@ -274,7 +272,7 @@ function editUsers(usersId = null) {
 			  	  			
 			  	  			$('#edit-users-messages').html('<div class="alert alert-success">'+
 			            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
-			            '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
+			            '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ res.messages +
 			          '</div>');
 
 			  	  			$(".alert-success").delay(500).show(10, function() {
