@@ -3,7 +3,7 @@
 $localhost = "localhost";
 $username = "root";
 $password = "";
-$dbname = "angel_inventario";
+$dbname = "stock";
 
 // db connection
 $connect = new mysqli($localhost, $username, $password, $dbname);
