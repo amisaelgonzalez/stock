@@ -124,12 +124,27 @@ switch ($_SESSION['rol']) {
 <ul class="nav navbar-nav navbar-right">
         <li id="navDashboard"><a href="index.php"><i class="glyphicon glyphicon-list-alt"></i>  Inicio</a></li>
 
+        <li class="dropdown" id="navPedidoSucursal">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-list-alt"></i> Pedidos <span class="caret"></span></a>
+          <ul class="dropdown-menu">            
+            <li id="topNavAddPedidoSucursal"><a href="pedidos_sucursal.php?o=add"> <i class="glyphicon glyphicon-plus"></i> Agregar Pedidos</a></li>            
+            <li id="topNavManagePedidoSucursal"><a href="pedidos_sucursal.php?o=manord"> <i class="glyphicon glyphicon-edit"></i> Gestionar Pedidos</a></li>
+         
+          </ul>
+        </li> 
 
-        <li id="navCreditos"><a href="creditos-surcusal.php"> <i class="glyphicon glyphicon-piggy-bank"></i> Créditos  </a></li>
-        <li id="navPedido"><a href="pedido-surcusal.php"><i class="glyphicon glyphicon-list-alt"></i>  Pedidos</a></li>
+        <li class="dropdown" id="navPedidoSucursal">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-list-alt"></i> Stock <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li id="topNavAddMiStock"><a href="mi_stock.php"> <i class="glyphicon glyphicon-plus"></i> Mi stock</a></li>
 
+            <li id="topNavAddStockGeneral"><a href="stock_general.php"> <i class="glyphicon glyphicon-plus"></i> Stock general</a></li>
 
-        <li id="navProduct"><a href="product-surcusal.php"> <i class="glyphicon glyphicon-ruble"></i> Productos </a></li>
+            <li id="topNavAddStockSucursal"><a href="stock_sucursal.php"> <i class="glyphicon glyphicon-plus"></i> Stock por sucursal</a></li>
+         
+          </ul>
+        </li>
 
         <li id="navUsersAd"><a href="users_ad.php"><i class="glyphicon glyphicon-user"></i> Usuarios </a></li>
 

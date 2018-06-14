@@ -1,26 +1,17 @@
 <?php 
-if (isset($_GET['o'])) {
-
-	if($_GET['o'] == 'add') { 
-	// add order
-		echo "<div class='div-request div-hide'>add</div>";
-	} else if($_GET['o'] == 'manord') { 
-		echo "<div class='div-request div-hide'>manord</div>";
-	} else if($_GET['o'] == 'editOrd') { 
-		echo "<div class='div-request div-hide'>editOrd</div>";
-	} else {
-		header('location: orders.php?o=manord');
-		exit;
-	}
-
-} else {
-	header('location: orders.php?o=manord');
-	exit;
-}
-
 require_once 'config/db_connect.php'; 
 require_once 'includes/header.php'; 
 include ("notification.php");
+
+if($_GET['o'] == 'add') { 
+// add order
+	echo "<div class='div-request div-hide'>add</div>";
+} else if($_GET['o'] == 'manord') { 
+	echo "<div class='div-request div-hide'>manord</div>";
+} else if($_GET['o'] == 'editOrd') { 
+	echo "<div class='div-request div-hide'>editOrd</div>";
+} // /else manage order
+
 
 ?>
 
