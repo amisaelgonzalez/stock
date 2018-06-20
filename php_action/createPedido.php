@@ -16,7 +16,7 @@ if($_POST) {
 		$valid['messages'] = "Creado exitosamente";	
 	} else {
 	 	$valid['success'] = false;
-	 	$valid['messages'] = "Error no se ha podido guardar".$pedidoName;
+	 	$valid['messages'] = "Error no se ha podido guardar";
 	}
 	 
 

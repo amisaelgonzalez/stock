@@ -1,15 +1,15 @@
 <?php
-/*
+
 $localhost = "localhost";
 $username = "efreinal_inventa";
 $password = "inventario2018*";
 $dbname = "efreinal_inventario";
-*/
-
+/*
 $localhost = "localhost";
 $username = "root";
 $password = "";
 $dbname = "angel_inventario";
+*/
 
 // db connection
 $connect = new mysqli($localhost, $username, $password, $dbname);

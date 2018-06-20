@@ -1,6 +1,6 @@
 <?php require_once 'config/db_connect.php' ?>
 <?php require_once 'includes/header.php'; ?>
-<?php require_once 'modal/productModal.php'; ?>
+<?php require_once 'modal/miStockModal.php'; ?>
 <?php include ("notification.php"); ?>
 <div class="row">
 	<div class="col-md-12">
@@ -19,20 +19,18 @@
 				<div class="remove-messages"></div>
 
 				<div class="div-action pull pull-right" style="padding-bottom:20px;">
-					<button class="btn btn-default button1" data-toggle="modal" id="addProductModalBtn" data-target="#addProductModal"> <i class="glyphicon glyphicon-plus-sign"></i> Agregar producto </button>
+					<button class="btn btn-default button1" data-toggle="modal" id="addMiStockModalBtn" data-target="#addMiStockModal"> <i class="glyphicon glyphicon-plus-sign"></i> Agregar producto </button>
 				</div> <!-- /div-action -->				
 				
-				<table class="table" id="manageProductTable">
+				<table class="table" id="manageMiStockTable">
 					<thead>
 						<tr>
-							<th style="width:10%;">Imagen</th>							
+							<th style="width:10%;">Imagen</th>	
 							<th>Nombre del producto</th>
-							<th>Precio de mayoreo</th>
-							<th>Precio de menudeo</th>
+							<th>Precio</th>
 							<th>Stock</th>
 							<th>Fabricante</th>
 							<th>Categoría</th>
-							<th>Estado</th>
 							<th style="width:15%;">Opciones</th>
 						</tr>
 					</thead>
@@ -49,6 +47,6 @@
 
 
 
-<script src="custom/js/product.js"></script>
+<script src="custom/js/miStock.js"></script>
 
 <?php require_once 'includes/footer.php'; ?>

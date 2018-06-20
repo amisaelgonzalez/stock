@@ -53,10 +53,12 @@ if($_POST) {
 				$value = $mainResult->fetch_assoc();
 				$user_id = $value['user_id'];
                 $rol     = $value['rol'];
+                $sucursal= $value['sucursales_id'];
               
                 // set session
                 $_SESSION['userId'] = $user_id;
                 $_SESSION['rol']    = $rol;
+                $_SESSION['sucursales_id'] = $sucursal;
 
 				header('location: dashboard.php');	
 

@@ -12,8 +12,9 @@ if($_POST) {
 	$totalAmountValue = $_POST['totalAmountValue'];
 
 	$userId = $_SESSION['userId'];
+	$sucursales_id = $_SESSION['sucursales_id'];
 
-	$sql = "INSERT INTO pedido_sucursal (pedido_sucursal_date, detalle, sub_total, vat, total, pedido_sucursal_status, user_id) VALUES (NOW(), '$detalle', '$subTotalValue', '$vatValue', '$totalAmountValue', 1, '$userId')";
+	$sql = "INSERT INTO pedido_sucursal (pedido_sucursal_date, detalle, sub_total, vat, total, pedido_sucursal_status, user_id, sucursales_id) VALUES (NOW(), '$detalle', '$subTotalValue', '$vatValue', '$totalAmountValue', 1, '$userId', '$sucursales_id')";
 		
 	$pedidoSucursal_id;
 	$pedidoSucursalStatus = false;

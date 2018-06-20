@@ -2,13 +2,9 @@
 
 require_once '../config/core.php';
 
-$userId = $_SESSION['userId'];
-$sucursales_id = $_SESSION['sucursales_id'];
+$sql = "SELECT s.pedido_sucursal_id, s.pedido_sucursal_date, s.detalle, s.total, su.sucursales_name FROM pedido_sucursal s INNER JOIN sucursales su ON s.sucursales_id = su.sucursales_id WHERE s.pedido_sucursal_status = 1";
 
-$sql = "SELECT s.pedido_sucursal_id, s.pedido_sucursal_date, s.detalle, s.total FROM pedido_sucursal s WHERE s.pedido_sucursal_status = 1 AND user_id = '$userId' AND s.sucursales_id = '$sucursales_id'";
 $result = $connect->query($sql);
-
-
 
 $output = array('data' => array());
 
@@ -28,15 +24,14 @@ if($result->num_rows > 0) {
 	    Acción <span class="caret"></span>
 	  </button>
 	  <ul class="dropdown-menu">
-	    <li><a href="pedidos_sucursal.php?o=editOrd&i='.$pedidoSucursalId.'" id="editPedidoSucursalModalBtn"> <i class="glyphicon glyphicon-edit"></i> Editar</a></li>
-	    
-	    <li><a type="button" data-toggle="modal" data-target="#removePedidoSucursalModal" id="removePedidoSucursalModalBtn" onclick="removePedidoSucursal('.$pedidoSucursalId.')"> <i class="glyphicon glyphicon-trash"></i> Eliminar</a></li>       
-	  </ul>
+	    <li><a href="pedidos_sucursal_listado.php?o=detalle&i='.$pedidoSucursalId.'" id="detallePedidoSucursalModalBtn"> <i class="glyphicon glyphicon-edit"></i> Ver productos </a></li>
 	</div>';		
 
  	$output['data'][] = array( 		
  		// num pedidoSucursal
  		$row[0],
+ 		// sucursal name
+ 		$row[4],
  		// pedidoSucursal date
  		$row[1],
  		// detalle

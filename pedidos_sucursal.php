@@ -299,7 +299,7 @@ if($_GET['o'] == 'add') {
 				  <div class="form-group">
 				    <label for="totalAmount" class="col-sm-3 control-label">Total neto</label>
 				    <div class="col-sm-9">
-				      <input type="text" class="form-control" id="totalAmount" name="totalAmount" disabled="true" value="<?php echo $data[5] ?>" />
+				      <input type="text" class="form-control" id="totalAmount" name="totalAmount" disabled="true" value="<?php echo $data[4] ?>" />
 				      <input type="hidden" class="form-control" id="totalAmountValue" name="totalAmountValue" value="<?php echo $data[4] ?>"  />
 				      <input type="hidden" class="form-control" id="totalAmountValueAct" name="totalAmountValueAct" value="<?php echo $data[4] ?>"  />
 				    </div>

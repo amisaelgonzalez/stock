@@ -1,34 +1,58 @@
 <?php require_once 'config/db_connect.php' ?>
 <?php require_once 'includes/header.php'; ?>
-<?php require_once 'modal/productModal.php'; ?>
+<?php require_once 'modal/stockPorSucursalModal.php'; ?>
 <?php include ("notification.php"); ?>
 <div class="row">
 	<div class="col-md-12">
 
 		<ol class="breadcrumb">
 		  <li><a href="dashboard.php">Inicio</a></li>		  
-		  <li class="active">stock por sucursal</li>
+		  <li class="active">Stock por sucursal</li>
 		</ol>
 
-		<div class="panel panel-default">
+        <div class="col-xs-12" style="padding-left: 0px !important;padding-right: 0px !important;">
+        	<label for="sucursal" class="col-xs-12 col-sm-4" style="padding-left: 0px !important;padding-right: 0px !important;">Seleccione una sucursal: </label>
+			    <div class="col-xs-12 col-sm-8" style="padding-left: 0px !important;padding-right: 0px !important;">
+			      <select class="form-control" id="sucursal" name="sucursal" onchange="buscarScursal();">
+			      	<?php 
+			      	$sql = "SELECT sucursales_id, sucursales_name FROM sucursales WHERE sucursales_status = 1";
+							$result = $connect->query($sql);
+							$i = 0;
+							while($row = $result->fetch_array()) {
+								if ($i == 0) {
+									echo "<option value='".$row[0]."' selected>".$row[1]."</option>";
+								}else{
+									echo "<option value='".$row[0]."'>".$row[1]."</option>";
+								}
+								$i++;
+							} // while
+							
+			      	?>
+			      </select>
+			    </div>
+        </div> <!-- /form-group-->
+        <br><br><br>
+
+
+		<div class="panel panel-default col-xs-12" style="padding-left: 0px !important;padding-right: 0px !important;">
 			<div class="panel-heading">
-				<div class="page-heading"> <i class="glyphicon glyphicon-edit"></i> Listado por sucursal</div>
+				<div class="page-heading"> <i class="glyphicon glyphicon-edit"></i> Listado de productos</div>
 			</div> <!-- /panel-heading -->
+
 			<div class="panel-body">
 
-				<div class="remove-messages"></div>			
+				<div class="remove-messages"></div>		
 				
-				<table class="table" id="manageProductTable">
+				<table class="table" id="manageStockPorSucursalTable">
 					<thead>
 						<tr>
 							<th style="width:10%;">Imagen</th>							
 							<th>Nombre del producto</th>
 							<th>Precio de mayoreo</th>
-							<th>Precio de menudeo</th>
 							<th>Stock</th>
 							<th>Fabricante</th>
 							<th>Categoría</th>
-							<th>Estado</th>
+							<!--<th>Estado</th>-->
 							<th style="width:15%;">Opciones</th>
 						</tr>
 					</thead>
@@ -45,6 +69,6 @@
 
 
 
-<script src="custom/js/product.js"></script>
+<script src="custom/js/stockPorSucursal.js"></script>
 
 <?php require_once 'includes/footer.php'; ?>

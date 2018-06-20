@@ -1,25 +1,25 @@
-var manageProductTable;
+var manageMiStockTable;
 
 $(document).ready(function() {
 	// top nav bar 
-	$('#navProduct').addClass('active');
-	// manage product data table
-	manageProductTable = $('#manageProductTable').DataTable({
-		'ajax': 'php_action/fetchProduct.php',
+	$('#navMiStock').addClass('active');
+	// manage miStock data table
+	manageMiStockTable = $('#manageMiStockTable').DataTable({
+		'ajax': 'php_action/fetchMiStock.php',
 		'order': []
 	});
 
-	// add product modal btn clicked
-	$("#addProductModalBtn").unbind('click').bind('click', function() {
-		// // product form reset
-		$("#submitProductForm")[0].reset();		
+	// add miStock modal btn clicked
+	$("#addMiStockModalBtn").unbind('click').bind('click', function() {
+		// // miStock form reset
+		$("#submitMiStockForm")[0].reset();		
 
 		// remove text-error 
 		$(".text-danger").remove();
 		// remove from-group error
 		$(".form-group").removeClass('has-error').removeClass('has-success');
 
-		$("#productImage").fileinput({
+		$("#miStockImage").fileinput({
 	      overwriteInitial: true,
 		    maxFileSize: 2500,
 		    showClose: false,
@@ -36,37 +36,41 @@ $(document).ready(function() {
 	  		allowedFileExtensions: ["jpg", "png", "gif", "JPG", "PNG", "GIF"]
 			});   
 
-		// submit product form
-		$("#submitProductForm").unbind('submit').bind('submit', function() {
+		// submit miStock form
+		$("#submitMiStockForm").unbind('submit').bind('submit', function() {
 
+			// remove text-error 
+			$(".text-danger").remove();
+			// remove from-group error
+			$(".form-group").removeClass('has-error').removeClass('has-success');
+			
 			// form validation
-			var productImage = $("#productImage").val();
-			var productName = $("#productName").val();
+			var miStockImage = $("#miStockImage").val();
+			var miStockName = $("#miStockName").val();
 			var quantity = $("#quantity").val();
-			var priceMayoreo = $("#priceMayoreo").val();
 			var priceMenudeo = $("#priceMenudeo").val();
 			var brandName = $("#brandName").val();
 			var categoryName = $("#categoryName").val();
-			var productStatus = $("#productStatus").val();
+			var miStockStatus = $("#miStockStatus").val();
 	
-			if(productImage == "") {
-				$("#productImage").closest('.center-block').after('<p class="text-danger">Este campo es obligatorio</p>');
-				$('#productImage').closest('.form-group').addClass('has-error');
+			if(miStockImage == "") {
+				$("#miStockImage").closest('.center-block').after('<p class="text-danger">Este campo es obligatorio</p>');
+				$('#miStockImage').closest('.form-group').addClass('has-error');
 			}	else {
 				// remov error text field
-				$("#productImage").find('.text-danger').remove();
+				$("#miStockImage").find('.text-danger').remove();
 				// success out for form 
-				$("#productImage").closest('.form-group').addClass('has-success');	  	
+				$("#miStockImage").closest('.form-group').addClass('has-success');	  	
 			}	// /else
 
-			if(productName == "") {
-				$("#productName").after('<p class="text-danger">Este campo es obligatorio</p>');
-				$('#productName').closest('.form-group').addClass('has-error');
+			if(miStockName == "") {
+				$("#miStockName").after('<p class="text-danger">Este campo es obligatorio</p>');
+				$('#miStockName').closest('.form-group').addClass('has-error');
 			}	else {
 				// remov error text field
-				$("#productName").find('.text-danger').remove();
+				$("#miStockName").find('.text-danger').remove();
 				// success out for form 
-				$("#productName").closest('.form-group').addClass('has-success');	  	
+				$("#miStockName").closest('.form-group').addClass('has-success');	  	
 			}	// /else
 
 			if(quantity == "") {
@@ -79,15 +83,6 @@ $(document).ready(function() {
 				$("#quantity").closest('.form-group').addClass('has-success');	  	
 			}	// /else
 
-			if(priceMayoreo == "") {
-				$("#priceMayoreo").after('<p class="text-danger">Este campo es obligatorio</p>');
-				$('#priceMayoreo').closest('.form-group').addClass('has-error');
-			}	else {
-				// remov error text field
-				$("#priceMayoreo").find('.text-danger').remove();
-				// success out for form 
-				$("#priceMayoreo").closest('.form-group').addClass('has-success');	  	
-			}	// /else
 
 			if(priceMenudeo == "") {
 				$("#priceMenudeo").after('<p class="text-danger">Este campo es obligatorio</p>');
@@ -119,19 +114,9 @@ $(document).ready(function() {
 				$("#categoryName").closest('.form-group').addClass('has-success');	  	
 			}	// /else
 
-			if(productStatus == "") {
-				$("#productStatus").after('<p class="text-danger">Este campo es obligatorio</p>');
-				$('#productStatus').closest('.form-group').addClass('has-error');
-			}	else {
-				// remov error text field
-				$("#productStatus").find('.text-danger').remove();
-				// success out for form 
-				$("#productStatus").closest('.form-group').addClass('has-success');	  	
-			}	// /else
-
-			if(productImage && productName && quantity && priceMayoreo && priceMenudeo && brandName && categoryName && productStatus) {
+			if(miStockImage && miStockName && quantity && priceMenudeo && brandName && categoryName) {
 				// submit loading button
-				$("#createProductBtn").button('loading');
+				$("#createMiStockBtn").button('loading');
 
 				var form = $(this);
 				var formData = new FormData(this);
@@ -148,14 +133,14 @@ $(document).ready(function() {
 
 						if(response.success == true) {
 							// submit loading button
-							$("#createProductBtn").button('reset');
+							$("#createMiStockBtn").button('reset');
 							
-							$("#submitProductForm")[0].reset();
+							$("#submitMiStockForm")[0].reset();
 
 							$("html, body, div.modal, div.modal-content, div.modal-body").animate({scrollTop: '0'}, 100);
 																	
 							// shows a successful message after operation
-							$('#add-product-messages').html('<div class="alert alert-success">'+
+							$('#add-miStock-messages').html('<div class="alert alert-success">'+
 		            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
 		            '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
 		          '</div>');
@@ -168,7 +153,7 @@ $(document).ready(function() {
 							}); // /.alert
 
 		          // reload the manage student table
-							manageProductTable.ajax.reload(null, true);
+							manageMiStockTable.ajax.reload(null, true);
 
 							// remove text-error 
 							$(".text-danger").remove();
@@ -182,19 +167,19 @@ $(document).ready(function() {
 			}	 // /if validation is ok 					
 
 			return false;
-		}); // /submit product form
+		}); // /submit miStock form
 
-	}); // /add product modal btn clicked
+	}); // /add miStock modal btn clicked
 	
 
-	// remove product 	
+	// remove miStock 	
 
 }); // document.ready fucntion
 
-function editProduct(productId = null) {
+function editMiStock(miStockId = null) {
 
-	if(productId) {
-		$("#productId").remove();		
+	if(miStockId) {
+		$("#miStockId").remove();		
 		// remove text-error 
 		$(".text-danger").remove();
 		// remove from-group error
@@ -205,23 +190,23 @@ function editProduct(productId = null) {
 		$('.div-result').addClass('div-hide');
 
 		$.ajax({
-			url: 'php_action/fetchSelectedProduct.php',
+			url: 'php_action/fetchSelectedMiStock.php',
 			type: 'post',
-			data: {productId: productId},
+			data: {miStockId: miStockId},
 			dataType: 'json',
 			success:function(response) {		
-			// alert(response.product_image);
+			// alert(response.miStock_image);
 				// modal spinner
 				$('.div-loading').addClass('div-hide');
 				// modal div
 				$('.div-result').removeClass('div-hide');				
 
-				$("#getProductImage").attr('src', 'stock/'+response.product_image);
+				$("#getMiStockImage").attr('src', 'stock/'+response.product_image);
 
-				$("#editProductImage").fileinput({		      
+				$("#editMiStockImage").fileinput({		      
 				});  
 
-				// $("#editProductImage").fileinput({
+				// $("#editMiStockImage").fileinput({
 		  //     overwriteInitial: true,
 			 //    maxFileSize: 2500,
 			 //    showClose: false,
@@ -238,47 +223,40 @@ function editProduct(productId = null) {
 		  // 		allowedFileExtensions: ["jpg", "png", "gif", "JPG", "PNG", "GIF"]
 				// });  
 
-				// product id 
-				$(".editProductFooter").append('<input type="hidden" name="productId" id="productId" value="'+response.product_id+'" />');				
-				$(".editProductPhotoFooter").append('<input type="hidden" name="productId" id="productId" value="'+response.product_id+'" />');				
+				// stock id 
+				$(".editMiStockFooter").append('<input type="hidden" name="miStockId" id="miStockId" value="'+response.stock_id+'" />');				
+				$(".editMiStockPhotoFooter").append('<input type="hidden" name="miStockId" id="miStockId" value="'+response.stock_id+'" />');				
 				
-				// product name
-				$("#editProductName").val(response.product_name);
+				// miStock name
+				$("#editMiStockName").val(response.product_name);
 				// quantity
 				$("#editQuantity").val(response.quantity);
-				// priceMayoreo
-				$("#editPriceMayoreo").val(response.price_mayoreo);
 				// priceMenudeo
 				$("#editPriceMenudeo").val(response.rate);
 				// brand name
 				$("#editBrandName").val(response.brand_id);
 				// category name
 				$("#editCategoryName").val(response.categories_id);
-				// status
-				$("#editProductStatus").val(response.active);
 
-				// update the product data function
-				$("#editProductForm").unbind('submit').bind('submit', function() {
+				// update the miStock data function
+				$("#editMiStockForm").unbind('submit').bind('submit', function() {
 
 					// form validation
-					var productImage = $("#editProductImage").val();
-					var productName = $("#editProductName").val();
+					var miStockImage = $("#editMiStockImage").val();
+					var miStockName = $("#editMiStockName").val();
 					var quantity = $("#editQuantity").val();
-					var priceMayoreo = $("#editPriceMayoreo").val();
 					var priceMenudeo = $("#editPriceMenudeo").val();
 					var brandName = $("#editBrandName").val();
 					var categoryName = $("#editCategoryName").val();
-					var productStatus = $("#editProductStatus").val();
-								
 
-					if(productName == "") {
-						$("#editProductName").after('<p class="text-danger">Este campo es obligatorio</p>');
-						$('#editProductName').closest('.form-group').addClass('has-error');
+					if(miStockName == "") {
+						$("#editMiStockName").after('<p class="text-danger">Este campo es obligatorio</p>');
+						$('#editMiStockName').closest('.form-group').addClass('has-error');
 					}	else {
 						// remov error text field
-						$("#editProductName").find('.text-danger').remove();
+						$("#editMiStockName").find('.text-danger').remove();
 						// success out for form 
-						$("#editProductName").closest('.form-group').addClass('has-success');	  	
+						$("#editMiStockName").closest('.form-group').addClass('has-success');	  	
 					}	// /else
 
 					if(quantity == "") {
@@ -289,16 +267,6 @@ function editProduct(productId = null) {
 						$("#editQuantity").find('.text-danger').remove();
 						// success out for form 
 						$("#editQuantity").closest('.form-group').addClass('has-success');	  	
-					}	// /else
-
-					if(priceMayoreo == "") {
-						$("#editPriceMayoreo").after('<p class="text-danger">Este campo es obligatorio</p>');
-						$('#editPriceMayoreo').closest('.form-group').addClass('has-error');
-					}	else {
-						// remov error text field
-						$("#editPriceMayoreo").find('.text-danger').remove();
-						// success out for form 
-						$("#editPriceMayoreo").closest('.form-group').addClass('has-success');	  	
 					}	// /else
 
 					if(priceMenudeo == "") {
@@ -331,23 +299,12 @@ function editProduct(productId = null) {
 						$("#editCategoryName").closest('.form-group').addClass('has-success');	  	
 					}	// /else
 
-					if(productStatus == "") {
-						$("#editProductStatus").after('<p class="text-danger">Este campo es obligatorio</p>');
-						$('#editProductStatus').closest('.form-group').addClass('has-error');
-					}	else {
-						// remov error text field
-						$("#editProductStatus").find('.text-danger').remove();
-						// success out for form 
-						$("#editProductStatus").closest('.form-group').addClass('has-success');	  	
-					}	// /else					
-
-					if(productName && quantity && priceMayoreo && priceMenudeo && brandName && categoryName && productStatus) {
+					if(miStockName && quantity && priceMenudeo && brandName && categoryName) {
 						// submit loading button
-						$("#editProductBtn").button('loading');
+						$("#editMiStockBtn").button('loading');
 
 						var form = $(this);
 						var formData = new FormData(this);
-
 						$.ajax({
 							url : form.attr('action'),
 							type: form.attr('method'),
@@ -356,62 +313,62 @@ function editProduct(productId = null) {
 							cache: false,
 							contentType: false,
 							processData: false,
-							success:function(response) {
-								console.log(response);
-								if(response.success == true) {
+							success:function(res) {
+								console.log(res);
+								if(res.success == true) {
 									// submit loading button
-									$("#editProductBtn").button('reset');																		
+									$("#editMiStockBtn").button('reset');																		
 
 									$("html, body, div.modal, div.modal-content, div.modal-body").animate({scrollTop: '0'}, 100);
 																			
 									// shows a successful message after operation
-									$('#edit-product-messages').html('<div class="alert alert-success">'+
-				            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
-				            '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
-				          '</div>');
+									$('#edit-miStock-messages').html('<div class="alert alert-success">'+
+				            		'<button type="button" class="close" data-dismiss="alert">&times;</button>'+
+				            		'<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ res.messages +
+				         			'</div>');
 
 									// remove the mesages
-				          $(".alert-success").delay(500).show(10, function() {
+				          			$(".alert-success").delay(500).show(10, function() {
 										$(this).delay(3000).hide(10, function() {
 											$(this).remove();
 										});
 									}); // /.alert
 
-				          // reload the manage student table
-									manageProductTable.ajax.reload(null, true);
+				          			// reload the manage student table
+									manageMiStockTable.ajax.reload(null, true);
 
 									// remove text-error 
 									$(".text-danger").remove();
 									// remove from-group error
 									$(".form-group").removeClass('has-error').removeClass('has-success');
 
-								} // /if response.success
+								} // /if res.success
 								
 							} // /success function
 						}); // /ajax function
 					}	 // /if validation is ok 					
 
 					return false;
-				}); // update the product data function
+				}); // update the miStock data function
 
-				// update the product image				
-				$("#updateProductImageForm").unbind('submit').bind('submit', function() {					
+				// update the miStock image				
+				$("#updateMiStockImageForm").unbind('submit').bind('submit', function() {					
 					// form validation
-					var productImage = $("#editProductImage").val();					
+					var miStockImage = $("#editMiStockImage").val();					
 					
-					if(productImage == "") {
-						$("#editProductImage").closest('.center-block').after('<p class="text-danger">Este campo es obligatorio</p>');
-						$('#editProductImage').closest('.form-group').addClass('has-error');
+					if(miStockImage == "") {
+						$("#editMiStockImage").closest('.center-block').after('<p class="text-danger">Este campo es obligatorio</p>');
+						$('#editMiStockImage').closest('.form-group').addClass('has-error');
 					}	else {
 						// remov error text field
-						$("#editProductImage").find('.text-danger').remove();
+						$("#editMiStockImage").find('.text-danger').remove();
 						// success out for form 
-						$("#editProductImage").closest('.form-group').addClass('has-success');	  	
+						$("#editMiStockImage").closest('.form-group').addClass('has-success');	  	
 					}	// /else
 
-					if(productImage) {
+					if(miStockImage) {
 						// submit loading button
-						$("#editProductImageBtn").button('loading');
+						$("#editMiStockImageBtn").button('loading');
 
 						var form = $(this);
 						var formData = new FormData(this);
@@ -424,37 +381,37 @@ function editProduct(productId = null) {
 							cache: false,
 							contentType: false,
 							processData: false,
-							success:function(response) {
+							success:function(resImg) {
 								
-								if(response.success == true) {
+								if(resImg.success == true) {
 									// submit loading button
-									$("#editProductImageBtn").button('reset');																		
+									$("#editMiStockImageBtn").button('reset');																		
 
 									$("html, body, div.modal, div.modal-content, div.modal-body").animate({scrollTop: '0'}, 100);
 																			
 									// shows a successful message after operation
-									$('#edit-productPhoto-messages').html('<div class="alert alert-success">'+
-				            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
-				            '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
-				          '</div>');
+									$('#edit-miStockPhoto-messages').html('<div class="alert alert-success">'+
+				    	    	    '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
+					    	        '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ resImg.messages +
+						            '</div>');
 
 									// remove the mesages
-				          $(".alert-success").delay(500).show(10, function() {
+						          $(".alert-success").delay(500).show(10, function() {
 										$(this).delay(3000).hide(10, function() {
 											$(this).remove();
 										});
 									}); // /.alert
 
-				          // reload the manage student table
-									manageProductTable.ajax.reload(null, true);
+							          // reload the manage student table
+									manageMiStockTable.ajax.reload(null, true);
 
 									$(".fileinput-remove-button").click();
 
 									$.ajax({
-										url: 'php_action/fetchProductImageUrl.php?i='+productId,
+										url: 'php_action/fetchMiStockImageUrl.php?i='+miStockId,
 										type: 'post',
-										success:function(response) {
-										$("#getProductImage").attr('src', response);		
+										success:function(resImg) {
+										$("#getMiStockImage").attr('src', resImg);		
 										}
 									});																		
 
@@ -463,45 +420,45 @@ function editProduct(productId = null) {
 									// remove from-group error
 									$(".form-group").removeClass('has-error').removeClass('has-success');
 
-								} // /if response.success
+								} // /if resImg.success
 								
 							} // /success function
 						}); // /ajax function
 					}	 // /if validation is ok 					
 
 					return false;
-				}); // /update the product image
+				}); // /update the miStock image
 
 			} // /success function
-		}); // /ajax to fetch product image
+		}); // /ajax to fetch miStock image
 
 				
 	} else {
 		alert('error please refresh the page');
 	}
-} // /edit product function
+} // /edit miStock function
 
-// remove product 
-function removeProduct(productId = null) {
-	if(productId) {
-		// remove product button clicked
-		$("#removeProductBtn").unbind('click').bind('click', function() {
+// remove miStock 
+function removeMiStock(miStockId = null) {
+	if(miStockId) {
+		// remove miStock button clicked
+		$("#removeMiStockBtn").unbind('click').bind('click', function() {
 			// loading remove button
-			$("#removeProductBtn").button('loading');
+			$("#removeMiStockBtn").button('loading');
 			$.ajax({
-				url: 'php_action/removeProduct.php',
+				url: 'php_action/removeMiStock.php',
 				type: 'post',
-				data: {productId: productId},
+				data: {miStockId: miStockId},
 				dataType: 'json',
 				success:function(response) {
 					// loading remove button
-					$("#removeProductBtn").button('reset');
+					$("#removeMiStockBtn").button('reset');
 					if(response.success == true) {
-						// remove product modal
-						$("#removeProductModal").modal('hide');
+						// remove miStock modal
+						$("#removeMiStockModal").modal('hide');
 
-						// update the product table
-						manageProductTable.ajax.reload(null, false);
+						// update the miStock table
+						manageMiStockTable.ajax.reload(null, false);
 
 						// remove success messages
 						$(".remove-messages").html('<div class="alert alert-success">'+
@@ -518,7 +475,7 @@ function removeProduct(productId = null) {
 					} else {
 
 						// remove success messages
-						$(".removeProductMessages").html('<div class="alert alert-success">'+
+						$(".removeMiStockMessages").html('<div class="alert alert-success">'+
 		            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
 		            '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
 		          '</div>');
@@ -532,11 +489,11 @@ function removeProduct(productId = null) {
 
 					} // /error
 				} // /success function
-			}); // /ajax fucntion to remove the product
+			}); // /ajax fucntion to remove the miStock
 			return false;
-		}); // /remove product btn clicked
-	} // /if productid
-} // /remove product function
+		}); // /remove miStock btn clicked
+	} // /if miStockid
+} // /remove miStock function
 
 function clearForm(oForm) {
 	// var frm_elements = oForm.elements;									
@@ -567,3 +524,96 @@ function clearForm(oForm) {
 	//     } // /switch
 	// 	} // for
 }
+
+function descontarMiStock(miStockId = null) {
+
+	if(miStockId) {
+		$("#miStockId").remove();		
+		// remove text-error 
+		$(".text-danger").remove();
+		// remove from-group error
+		$(".form-group").removeClass('has-error').removeClass('has-success');
+		// modal spinner
+		$('.div-loading').removeClass('div-hide');
+		// modal div
+		$('.div-result').addClass('div-hide');
+
+		// modal spinner
+		$('.div-loading').addClass('div-hide');
+		// modal div
+		$('.div-result').removeClass('div-hide')
+		// stockPorSucursal id 
+		$(".descontarMiStockFooter").append('<input type="hidden" name="miStockId" id="miStockId" value="'+miStockId+'" />');
+
+		// update the descontarMiStock data function
+		$("#descontarMiStockForm").unbind('submit').bind('submit', function() {
+
+			// form validation
+			var cantidad = $("#cantidad").val();
+
+			if(cantidad == "") {
+				$("#cantidad").after('<p class="text-danger">Este campo es obligatorio</p>');
+				$('#cantidad').closest('.form-group').addClass('has-error');
+			}	else {
+				// remov error text field
+				$("#cantidad").find('.text-danger').remove();
+				// success out for form 
+				$("#cantidad").closest('.form-group').addClass('has-success');	  	
+			}	// /else
+
+			if(cantidad) {
+				// submit loading button
+				$("#descontarMiStockBtn").button('loading');
+
+				var form = $(this);
+				var formData = new FormData(this);
+
+				$.ajax({
+					url : form.attr('action'),
+					type: form.attr('method'),
+					data: formData,
+					dataType: 'json',
+					cache: false,
+					contentType: false,
+					processData: false,
+					success:function(response) {
+						console.log(response);
+						if(response.success == true) {
+							// submit loading button
+							$("#descontarMiStockBtn").button('reset');																		
+							// update the miStock table
+							manageMiStockTable.ajax.reload(null, false);
+							$("html, body, div.modal, div.modal-content, div.modal-body").animate({scrollTop: '0'}, 100);
+																	
+							// shows a successful message after operation
+							$('#descontar-miStock-messages').html('<div class="alert alert-success">'+
+		            		'<button type="button" class="close" data-dismiss="alert">&times;</button>'+
+		            		'<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
+					        '</div>');
+
+							// remove the mesages
+				            $(".alert-success").delay(500).show(10, function() {
+								$(this).delay(3000).hide(10, function() {
+									$(this).remove();
+								});
+							}); // /.alert
+
+							// remove text-error 
+							$(".text-danger").remove();
+							// remove from-group error
+							$(".form-group").removeClass('has-error').removeClass('has-success');
+
+						} // /if response.success
+						
+					} // /success function
+				}); // /ajax function
+			}	 // /if validation is ok 					
+
+			return false;
+		}); // update the descontarMiStock data function
+
+				
+	} else {
+		alert('error please refresh the page');
+	}
+} // /descontarMiStock function

@@ -89,7 +89,8 @@ switch ($_SESSION['rol']) {
             <li id="topNavAddOrder"><a href="orders.php?o=add"> <i class="glyphicon glyphicon-plus"></i> Agregar Cr&eacute;ditos</a></li>            
             <li id="topNavManageOrder"><a href="orders.php?o=manord"> <i class="glyphicon glyphicon-edit"></i> Gestionar Cr&eacute;ditos</a></li>
 
-            <li id="navCreditos"><a href="creditos.php"> <i class="glyphicon glyphicon-list-alt"></i> Gestionar Cr&eacute;ditos Sucursales</a></li>            
+            <li id="navCreditos"><a href="creditos.php"> <i class="glyphicon glyphicon-list-alt"></i> Gestionar Cr&eacute;ditos Sucursales</a></li>   
+            <li id="navPedidoSucursalListado"><a href="pedidos_sucursal_listado.php?o=manord"> <i class="glyphicon glyphicon-list-alt"></i> Ver pedidos de sucursales</a></li>
           </ul>
         </li> 
 
@@ -137,14 +138,18 @@ switch ($_SESSION['rol']) {
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-list-alt"></i> Stock <span class="caret"></span></a>
           <ul class="dropdown-menu">
             
-            <li id="topNavAddMiStock"><a href="mi_stock.php"> <i class="glyphicon glyphicon-plus"></i> Mi stock</a></li>
+            <li id="topNavMiStock"><a href="mi_stock.php"> <i class="glyphicon glyphicon-list-alt"></i> Mi stock</a></li>
 
-            <li id="topNavAddStockGeneral"><a href="stock_general.php"> <i class="glyphicon glyphicon-plus"></i> Stock general</a></li>
+            <li id="topNavStockGeneral"><a href="stock_general.php"> <i class="glyphicon glyphicon-list-alt"></i> Stock general</a></li>
 
-            <li id="topNavAddStockSucursal"><a href="stock_sucursal.php"> <i class="glyphicon glyphicon-plus"></i> Stock por sucursal</a></li>
+            <li id="topNavStockPorSucursal"><a href="stock_sucursal.php"> <i class="glyphicon glyphicon-list-alt"></i> Stock por sucursal</a></li>
          
           </ul>
         </li>
+
+        <li id="navMisSolicitudes"><a href="mis_solicitudes.php"><i class="glyphicon glyphicon-import"></i> Mis solicitudes </a></li>
+
+        <li id="navSolicitudes"><a href="solicitudes.php"><i class="glyphicon glyphicon-export"></i> Solicitudes </a></li>
 
         <li id="navUsersAd"><a href="users_ad.php"><i class="glyphicon glyphicon-user"></i> Usuarios </a></li>
 
@@ -204,7 +209,7 @@ switch ($_SESSION['rol']) {
 <ul class="nav navbar-nav navbar-right">
 
        
-        <li id="navDashboard"><a href="index.php"><i class="glyphicon glyphicon-list-alt"></i>  Inicio</a></li>        
+        <li id="navDashboard"><a href="dashboard.php"><i class="glyphicon glyphicon-list-alt"></i>  Inicio</a></li>        
         
         <li class="dropdown" id="navOrder">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-piggy-bank"></i> Cr&eacute;ditos <span class="caret"></span></a>
