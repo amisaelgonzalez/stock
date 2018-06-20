@@ -17,14 +17,24 @@ if($_POST) {
 	    $editSucursal = $_POST['editSucursal'];
     }
 
-	$sql = "UPDATE users SET username = '$usersName', email = '$usersEmail', rol = '$usersRol', sucursales_id = '$editSucursal' WHERE user_id = '$usersId'";
+    $sqlUsername = "SELECT * FROM users WHERE username = '$usersName'";
+	$result = $connect->query($sqlUsername);
 
-	if($connect->query($sql) === TRUE) {
-	 	$valid['success'] = true;
-		$valid['messages'] = "Actualizado exitosamente";	
+	if($result->num_rows > 0) { 
+		$valid['success'] = false;
+		$valid['messages'] = "Error el usuario ya existe";
 	} else {
-	 	$valid['success'] = false;
-	 	$valid['messages'] = "Error no se ha podido actualizar";
+
+		$sql = "UPDATE users SET username = '$usersName', email = '$usersEmail', rol = '$usersRol', sucursales_id = '$editSucursal' WHERE user_id = '$usersId'";
+
+		if($connect->query($sql) === TRUE) {
+		 	$valid['success'] = true;
+			$valid['messages'] = "Actualizado exitosamente";	
+		} else {
+		 	$valid['success'] = false;
+		 	$valid['messages'] = "Error no se ha podido actualizar";
+		}
+
 	}
 	 
 	$connect->close();

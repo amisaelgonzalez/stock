@@ -79,17 +79,22 @@ $(document).ready(function() {
 						// remove the form error
 						$('.form-group').removeClass('has-error').removeClass('has-success');
   	  			
-  	  			$('#add-usersAd-messages').html('<div class="alert alert-success">'+
-            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
-            '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
-          '</div>');
+  	  					$('#add-usersAd-messages').html('<div class="alert alert-success">'+
+        			    '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
+			            '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
+			            '</div>');
 
-  	  			$(".alert-success").delay(500).show(10, function() {
+  	  					$(".alert-success").delay(500).show(10, function() {
 							$(this).delay(3000).hide(10, function() {
 								$(this).remove();
 							});
 						}); // /.alert
-					}  // if
+					} else {
+						$('#add-usersAd-messages').html('<div class="alert alert-danger">'+
+        			    '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
+			            '<strong><i class="glyphicon glyphicon-remove-sign"></i></strong> '+ response.messages +
+			            '</div>');
+					}
 
 				} // /success
 			}); // /ajax	
@@ -185,7 +190,6 @@ function editUsersAd(usersAdId = null) {
 							data: form.serialize(),
 							dataType: 'json',
 							success:function(response) {
-
 								if(response.success == true) {
 									console.log(response);
 									// submit btn
@@ -198,17 +202,23 @@ function editUsersAd(usersAdId = null) {
 									// remove the form error
 									$('.form-group').removeClass('has-error').removeClass('has-success');
 			  	  			
-			  	  			$('#edit-usersAd-messages').html('<div class="alert alert-success">'+
-			            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
-			            '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
-			          '</div>');
+			  	  					$('#edit-usersAd-messages').html('<div class="alert alert-success">'+
+						            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
+						            '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
+							        '</div>');
 
-			  	  			$(".alert-success").delay(500).show(10, function() {
+			  	  					$(".alert-success").delay(500).show(10, function() {
 										$(this).delay(3000).hide(10, function() {
 											$(this).remove();
 										});
 									}); // /.alert
-								} // /if
+								} else {
+									$('#edit-usersAd-messages').html('<div class="alert alert-danger">'+
+						            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
+						            '<strong><i class="glyphicon glyphicon-remove-sign"></i></strong> '+ response.messages +
+							        '</div>');
+								}
+
 									
 							}// /success
 						});	 // /ajax												

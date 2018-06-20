@@ -12,16 +12,25 @@ if($_POST) {
 
     $user_id = $_SESSION['userId'];
 
-	$sql = "INSERT INTO users (username, password, users_status, email, rol, sucursales_id, creado_por) VALUES ('$usersAdName', '$password', 1, '$usersAdEmail', 3, null, '$user_id')";
+    $sqlUsername = "SELECT * FROM users WHERE username = '$usersAdName'";
+	$result = $connect->query($sqlUsername);
 
-	if($connect->query($sql) === TRUE) {
-	 	$valid['success'] = true;
-		$valid['messages'] = "Creado exitosamente";	
+	if($result->num_rows > 0) { 
+		$valid['success'] = false;
+		$valid['messages'] = "Error el usuario ya existe";
 	} else {
-	 	$valid['success'] = false;
-	 	$valid['messages'] = "Error no se ha podido guardar";
-	}
+
+		$sql = "INSERT INTO users (username, password, users_status, email, rol, sucursales_id, creado_por) VALUES ('$usersAdName', '$password', 1, '$usersAdEmail', 3, null, '$user_id')";
+
+		if($connect->query($sql) === TRUE) {
+		 	$valid['success'] = true;
+			$valid['messages'] = "Creado exitosamente";	
+		} else {
+		 	$valid['success'] = false;
+		 	$valid['messages'] = "Error no se ha podido guardar";
+		}
 	 
+	}
 
 	$connect->close();
 

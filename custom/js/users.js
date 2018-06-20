@@ -99,24 +99,29 @@ $(document).ready(function() {
 						// reload the manage member table 
 						manageUsersTable.ajax.reload(null, false);						
 
-  	  			// reset the form text
+  	  					// reset the form text
 						$("#submitUsersForm")[0].reset();
 						// remove the error text
 						$(".text-danger").remove();
 						// remove the form error
 						$('.form-group').removeClass('has-error').removeClass('has-success');
   	  			
-  	  			$('#add-users-messages').html('<div class="alert alert-success">'+
-            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
-            '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
-          '</div>');
+			  			$('#add-users-messages').html('<div class="alert alert-success">'+
+			            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
+			            '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
+			            '</div>');
 
-  	  			$(".alert-success").delay(500).show(10, function() {
+		  	  			$(".alert-success").delay(500).show(10, function() {
 							$(this).delay(3000).hide(10, function() {
 								$(this).remove();
 							});
 						}); // /.alert
-					}  // if
+					} else {
+						$('#add-users-messages').html('<div class="alert alert-danger">'+
+			            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
+			            '<strong><i class="glyphicon glyphicon-remove-sign"></i></strong> '+ response.messages +
+			            '</div>');
+					}
 
 				} // /success
 			}); // /ajax	
@@ -258,7 +263,7 @@ function editUsers(usersId = null) {
 							data: form.serialize(),
 							dataType: 'json',
 							success:function(res) {
-							console.log(res);
+
 								if(res.success == true) {
 									// submit btn
 									$('#editUsersBtn').button('reset');
@@ -270,18 +275,22 @@ function editUsers(usersId = null) {
 									// remove the form error
 									$('.form-group').removeClass('has-error').removeClass('has-success');
 			  	  			
-			  	  			$('#edit-users-messages').html('<div class="alert alert-success">'+
-			            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
-			            '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ res.messages +
-			          '</div>');
+						  	  		$('#edit-users-messages').html('<div class="alert alert-success">'+
+						            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
+						            '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ res.messages +
+						            '</div>');
 
-			  	  			$(".alert-success").delay(500).show(10, function() {
+			  	  					$(".alert-success").delay(500).show(10, function() {
 										$(this).delay(3000).hide(10, function() {
 											$(this).remove();
 										});
 									}); // /.alert
-								} // /if
-									
+								} else{
+									$('#edit-users-messages').html('<div class="alert alert-danger">'+
+						            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
+						            '<strong><i class="glyphicon glyphicon-remove-sign"></i></strong> '+ res.messages +
+						            '</div>');
+								}
 							}// /success
 						});	 // /ajax												
 					} // /if

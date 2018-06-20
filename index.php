@@ -45,22 +45,36 @@ if($_POST) {
 
 		if($result->num_rows == 1) {
 			$password = md5($password);
-			// exists
-			$mainSql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+			// exists 
+			$mainSql = "SELECT s.user_id as user_id, s.rol as rol, s.sucursales_id as sucursales_id, su.sucursales_status as sucursales_status FROM users s LEFT JOIN sucursales su ON s.sucursales_id = su.sucursales_id WHERE username = '$username' AND password = '$password'";
 			$mainResult = $connect->query($mainSql);
 
 			if($mainResult->num_rows == 1) {
 				$value = $mainResult->fetch_assoc();
-				$user_id = $value['user_id'];
-                $rol     = $value['rol'];
-                $sucursal= $value['sucursales_id'];
-              
-                // set session
-                $_SESSION['userId'] = $user_id;
-                $_SESSION['rol']    = $rol;
-                $_SESSION['sucursales_id'] = $sucursal;
+				if ($value['rol'] == 2) {
+					if ($value['sucursales_status'] != 1) {
+						$login = false;
+					}else{
+						$login = true;
+					}
+				}else{
+					$login = true;
+				}
 
-				header('location: dashboard.php');	
+				if ($login == true) {
+					# code...
+					$user_id = $value['user_id'];
+	                $rol     = $value['rol'];
+	                $sucursal= $value['sucursales_id'];
+	              
+	                // set session
+	                $_SESSION['userId'] = $user_id;
+	                $_SESSION['rol']    = $rol;
+	                $_SESSION['sucursales_id'] = $sucursal;
+					header('location: dashboard.php');	
+				}else{
+					$errors[] = "La sucursal que administra ha sido eliminada";
+				}
 
 			} else{
 				

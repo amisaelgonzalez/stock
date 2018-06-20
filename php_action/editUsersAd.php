@@ -10,14 +10,24 @@ if($_POST) {
     $usersAdEmail = $_POST['editEmail'];
     $usersAdId = $_POST['usersAdId'];
 
-	$sql = "UPDATE users SET username = '$usersAdName', email = '$usersAdEmail' WHERE user_id = '$usersAdId'";
+	$sqlUsername = "SELECT * FROM users WHERE username = '$usersAdName'";
+	$result = $connect->query($sqlUsername);
 
-	if($connect->query($sql) === TRUE) {
-	 	$valid['success'] = true;
-		$valid['messages'] = "Actualizado exitosamente";	
+	if($result->num_rows > 0) { 
+		$valid['success'] = false;
+		$valid['messages'] = "Error el usuario ya existe";
 	} else {
-	 	$valid['success'] = false;
-	 	$valid['messages'] = "Error no se ha podido actualizar";
+
+		$sql = "UPDATE users SET username = '$usersAdName', email = '$usersAdEmail' WHERE user_id = '$usersAdId'";
+
+		if($connect->query($sql) === TRUE) {
+		 	$valid['success'] = true;
+			$valid['messages'] = "Actualizado exitosamente";	
+		} else {
+		 	$valid['success'] = false;
+		 	$valid['messages'] = "Error no se ha podido actualizar";
+		}
+
 	}
 	 
 	$connect->close();
