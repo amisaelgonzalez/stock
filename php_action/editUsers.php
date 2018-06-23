@@ -16,6 +16,7 @@ if($_POST) {
     }else{
 	    $editSucursal = $_POST['editSucursal'];
     }
+    $usersName = strtolower($usersName);
 
     $sqlUsername = "SELECT * FROM users WHERE username = '$usersName'";
 	$result = $connect->query($sqlUsername);

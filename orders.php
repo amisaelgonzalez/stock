@@ -2,6 +2,7 @@
 require_once 'config/db_connect.php'; 
 require_once 'includes/header.php'; 
 include ("notification.php");
+if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 4) {
 
 if($_GET['o'] == 'add') { 
 // add order
@@ -23,7 +24,9 @@ if($_GET['o'] == 'add') {
   		Agregar Cr&eacute;dito
 		<?php } else if($_GET['o'] == 'manord') { ?>
 			Listado de cr&eacute;ditos
-		<?php } // /else manage order ?>
+		<?php } else if($_GET['o'] == 'editOrd') { ?>
+			Editar cr&eacute;ditos
+		<?php } ?>
   </li>
 </ol>
 
@@ -583,8 +586,5 @@ if($_GET['o'] == 'add') {
 
 
 <script src="custom/js/order.js"></script>
-
 <?php require_once 'includes/footer.php'; ?>
-
-
-	
+<?php }else{ echo "<script> alert('Su usuario no posee los permisos para entrar en esta vista, usted sera redireccionado.'); window.location.href = 'index.php' </script>";} ?>

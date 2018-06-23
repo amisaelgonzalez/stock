@@ -9,7 +9,6 @@ $sql = "SELECT s.pedido_sucursal_id, s.pedido_sucursal_date, s.detalle, s.total 
 $result = $connect->query($sql);
 
 
-
 $output = array('data' => array());
 
 if($result->num_rows > 0) { 
@@ -28,8 +27,8 @@ if($result->num_rows > 0) {
 	    Acción <span class="caret"></span>
 	  </button>
 	  <ul class="dropdown-menu">
+		<li><a href="pedidos_sucursal.php?o=detalle&i='.$pedidoSucursalId.'"> <i class="glyphicon glyphicon-eyes"></i> Ver pedido </a></li>
 	    <li><a href="pedidos_sucursal.php?o=editOrd&i='.$pedidoSucursalId.'" id="editPedidoSucursalModalBtn"> <i class="glyphicon glyphicon-edit"></i> Editar</a></li>
-	    
 	    <li><a type="button" data-toggle="modal" data-target="#removePedidoSucursalModal" id="removePedidoSucursalModalBtn" onclick="removePedidoSucursal('.$pedidoSucursalId.')"> <i class="glyphicon glyphicon-trash"></i> Eliminar</a></li>       
 	  </ul>
 	</div>';		

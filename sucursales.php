@@ -1,6 +1,7 @@
 <?php require_once 'includes/header.php'; ?>
 <?php include('modal/sucursalesModal.php');?>
 <?php include ("notification.php"); ?>  
+<?php if ($_SESSION['rol'] == 1) { ?>
 
 <div class="row">
 	<div class="col-md-12">
@@ -47,3 +48,4 @@
 <script src="custom/js/sucursales.js"></script>
 
 <?php require_once 'includes/footer.php'; ?>
+<?php }else{ echo "<script> alert('Su usuario no posee los permisos para entrar en esta vista, usted sera redireccionado.'); window.location.href = 'index.php' </script>";} ?>

@@ -29,6 +29,10 @@ $errors = array();
 if($_POST) {		
 
 	$username = $connect->real_escape_string($_POST['username']); // Escapando caracteres especiales
+
+	//convertir en minuscula
+	$username = strtolower($username);
+
 	$password = $_POST['password'];
 
 	if(empty($username) || empty($password)) {
@@ -62,7 +66,6 @@ if($_POST) {
 				}
 
 				if ($login == true) {
-					# code...
 					$user_id = $value['user_id'];
 	                $rol     = $value['rol'];
 	                $sucursal= $value['sucursales_id'];
@@ -71,7 +74,11 @@ if($_POST) {
 	                $_SESSION['userId'] = $user_id;
 	                $_SESSION['rol']    = $rol;
 	                $_SESSION['sucursales_id'] = $sucursal;
-					header('location: dashboard.php');	
+	                if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 4) {
+						header('location: dashboard.php');
+	                }elseif ($_SESSION['rol'] == 3) {
+	                	header('location: stock.php');
+	                }
 				}else{
 					$errors[] = "La sucursal que administra ha sido eliminada";
 				}

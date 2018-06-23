@@ -1,6 +1,8 @@
 <?php require_once 'includes/header.php'; ?>
 <?php include('modal/pedidoModal.php');?>
 <?php include ("notification.php"); ?>
+<?php if ($_SESSION['rol'] == 1) { ?>
+
 <div class="row">
 	<div class="col-md-12">
 
@@ -38,11 +40,6 @@
 </div> <!-- /row -->
 
 
-
-
-
-
-
 <script src="custom/js/pedido.js"></script>
-
 <?php require_once 'includes/footer.php'; ?>
+<?php }else{ echo "<script> alert('Su usuario no posee los permisos para entrar en esta vista, usted sera redireccionado.'); window.location.href = 'index.php' </script>";} ?>

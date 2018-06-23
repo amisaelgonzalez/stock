@@ -8,6 +8,7 @@ if($_POST) {
 
 	$username = $_POST['username'];
 	$userId = $_POST['user_id'];
+	$username = strtolower($username);
 
     $sqlUsername = "SELECT * FROM users WHERE username = '$username'";
 	$result = $connect->query($sqlUsername);

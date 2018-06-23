@@ -15,6 +15,7 @@ if($_POST) {
     	$sucursal = null;
     }
     $user_id = $_SESSION['userId'];
+    $usersName = strtolower($usersName);
 
     $sqlUsername = "SELECT * FROM users WHERE username = '$usersName'";
 	$result = $connect->query($sqlUsername);

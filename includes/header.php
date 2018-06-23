@@ -59,7 +59,6 @@ $(document).ready(function(){
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <!-- <a class="navbar-brand" href="#">Brand</a> -->
     </div>
 
 
@@ -177,13 +176,7 @@ switch ($_SESSION['rol']) {
 ?>
 <ul class="nav navbar-nav navbar-right">
 
-        <li id="navDashboard"><a href="index.php"><i class="glyphicon glyphicon-list-alt"></i> Inicio </a></li>
-
-
-
         <li id="navProduct"><a href="stock.php"> <i class="glyphicon glyphicon-ruble"></i> Stock </a></li>
-
-
 
         <li class="dropdown" id="navOrder">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-piggy-bank"></i> Cr&eacute;ditos <span class="caret"></span></a>
@@ -208,7 +201,6 @@ switch ($_SESSION['rol']) {
 ?>
 <ul class="nav navbar-nav navbar-right">
 
-       
         <li id="navDashboard"><a href="dashboard.php"><i class="glyphicon glyphicon-list-alt"></i>  Inicio</a></li>        
         
         <li class="dropdown" id="navOrder">
@@ -234,13 +226,6 @@ switch ($_SESSION['rol']) {
         break;
 }
 ?>
- <!--
-
-
-
-  -->
-
-
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

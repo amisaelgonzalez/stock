@@ -9,6 +9,7 @@ if($_POST) {
 	$usersAdName = $_POST['editUsersAdName'];
     $usersAdEmail = $_POST['editEmail'];
     $usersAdId = $_POST['usersAdId'];
+    $usersAdName = strtolower($usersAdName);
 
 	$sqlUsername = "SELECT * FROM users WHERE username = '$usersAdName'";
 	$result = $connect->query($sqlUsername);

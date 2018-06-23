@@ -2,6 +2,7 @@
 require_once 'config/db_connect.php'; 
 require_once 'includes/header.php'; 
 include ("notification.php");
+if ($_SESSION['rol'] == 2) {
 
 if($_GET['o'] == 'add') { 
 // add order
@@ -23,6 +24,8 @@ if($_GET['o'] == 'add') {
   		Agregar Cr&eacute;dito
 		<?php } else if($_GET['o'] == 'manord') { ?>
 			Listado de cr&eacute;ditos
+		<?php } else if($_GET['o'] == 'editOrd') { ?>
+			Editar cr&eacute;ditos
 		<?php } // /else manage order ?>
   </li>
 </ol>
@@ -72,9 +75,9 @@ if($_GET['o'] == 'add') {
 			  </div> <!--/form-group-->
 
 			  <div class="form-group">
-			    <label for="clientName" class="col-sm-2 control-label">Usuario </label>
+			    <label for="clientName" class="col-sm-2 control-label">Nombre o descripción </label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="clientName" name="clientName" autocomplete="off" disabled />
+			      <input type="text" class="form-control" id="clientName" name="clientName" autocomplete="off" />
 			    </div>
 			  </div> <!--/form-group-->
 
@@ -272,7 +275,7 @@ if($_GET['o'] == 'add') {
 			  <input type="hidden" class="form-control" id="clientNameAct" name="clientNameAct" value="<?php echo $data[2] ?>" />
 			
 			  <div class="form-group">
-			    <label for="clientName" class="col-sm-2 control-label">Usuario </label>
+			    <label for="clientName" class="col-sm-2 control-label">Nombre o descripción </label>
 			    <div class="col-sm-10">
 			      <input type="text" class="form-control" id="clientName" name="clientName" autocomplete="off" disabled value="<?php echo $data[2] ?>" />
 			    </div>
@@ -547,8 +550,5 @@ if($_GET['o'] == 'add') {
 
 
 <script src="custom/js/orderUsers.js"></script>
-
 <?php require_once 'includes/footer.php'; ?>
-
-
-	
+<?php }else{ echo "<script> alert('Su usuario no posee los permisos para entrar en esta vista, usted sera redireccionado.'); window.location.href = 'index.php' </script>";} ?>

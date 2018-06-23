@@ -11,6 +11,7 @@ if($_POST) {
     $usersAdEmail = $_POST['email'];
 
     $user_id = $_SESSION['userId'];
+    $usersAdName = strtolower($usersAdName);
 
     $sqlUsername = "SELECT * FROM users WHERE username = '$usersAdName'";
 	$result = $connect->query($sqlUsername);

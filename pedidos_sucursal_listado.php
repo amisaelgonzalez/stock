@@ -2,6 +2,7 @@
 require_once 'config/db_connect.php'; 
 require_once 'includes/header.php'; 
 include ("notification.php");
+if ($_SESSION['rol'] == 1) {
 
 if($_GET['o'] == 'manord') { 
 	echo "<div class='div-request div-hide'>manord</div>";
@@ -110,26 +111,26 @@ if($_GET['o'] == 'manord') {
 			  			<tr id="row<?php echo $x; ?>" class="<?php echo $arrayNumber; ?>">			  				
 			  				<td style="margin-left:20px;">
 
-			  						<?php
-			  							$productSql = "SELECT product_name FROM product WHERE product_id = ".$pedidoSucursalItemData['product_id'];
-			  							$productData = $connect->query($productSql);
+		  						<?php
+		  							$productSql = "SELECT product_name FROM product WHERE product_id = ".$pedidoSucursalItemData['product_id'];
+		  							$productData = $connect->query($productSql);
 
-			  							while($row = $productData->fetch_array()) {
+		  							while($row = $productData->fetch_array()) {
 
-			  								echo $row['product_name'];
-										 	} // /while 
-
-			  						?>
+		  								echo $row['product_name'];
+									} // /while 
+		  						?>
 			  				</td>
-			  				<td style="padding-left:20px;">			  					
+			  				<td>			  					
 			  					<?php echo $pedidoSucursalItemData['rate']; ?>	  					
 			  				</td>
-			  				<td style="padding-left:20px;">
-			  					<div class="form-group">
-			  						<?php echo $pedidoSucursalItemData['quantity']; ?>
-			  					</div>
+			  				<td>
+
+		  						<?php echo $pedidoSucursalItemData['quantity']; ?>
+
 			  				</td>
-			  				<td style="padding-left:20px;">		
+			  				<td>		
+			  					
 			  					<?php echo $pedidoSucursalItemData['total']; ?>	  					
 			  				</td>
 			  			</tr>
@@ -159,8 +160,5 @@ if($_GET['o'] == 'manord') {
 </div> <!--/panel-->	
 
 <script src="custom/js/pedidoSucursalListado.js"></script>
-
 <?php require_once 'includes/footer.php'; ?>
-
-
-	
+<?php }else{ echo "<script> alert('Su usuario no posee los permisos para entrar en esta vista, usted sera redireccionado.'); window.location.href = 'index.php' </script>";} ?>

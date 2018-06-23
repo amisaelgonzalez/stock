@@ -35,7 +35,7 @@ $orderItemResult = $connect->query($orderItemSql);
 
 			<center>
 				Fecha : '.$orderDate.'
-				<center>Usuario : '.$clientName.'</center>
+				<center>Nombre o descripción : '.$clientName.'</center>
 			</center>		
 			</th>
 				
